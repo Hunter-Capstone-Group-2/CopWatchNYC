@@ -1,0 +1,6 @@
+framework module Pods_CopWatchNYC {
+  umbrella header "Pods-CopWatchNYC-umbrella.h"
+
+  export *
+  module * { export * }
+}

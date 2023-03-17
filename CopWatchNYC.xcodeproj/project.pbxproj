@@ -16,6 +16,18 @@
 		1962704B29C4291200911355 /* CopWatchNYCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1962704A29C4291200911355 /* CopWatchNYCTests.swift */; };
 		1962705529C4291200911355 /* CopWatchNYCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1962705429C4291200911355 /* CopWatchNYCUITests.swift */; };
 		1962705729C4291200911355 /* CopWatchNYCUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1962705629C4291200911355 /* CopWatchNYCUITestsLaunchTests.swift */; };
+		1962706929C42A0B00911355 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1962706829C42A0B00911355 /* String.swift */; };
+		1962706B29C42A1F00911355 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1962706A29C42A1F00911355 /* View.swift */; };
+		1962706D29C42A9F00911355 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1962706C29C42A9F00911355 /* LogInView.swift */; };
+		1962706F29C42AD500911355 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1962706E29C42AD500911355 /* SignUpView.swift */; };
+		1962707129C42ADF00911355 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1962707029C42ADF00911355 /* AuthView.swift */; };
+		1962707329C42AE700911355 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1962707229C42AE700911355 /* MapView.swift */; };
+		1962707529C42B1000911355 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1962707429C42B1000911355 /* AppDelegate.swift */; };
+		1962707729C42B1800911355 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1962707629C42B1800911355 /* LocationManager.swift */; };
+		1962707C29C42C5200911355 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 1962707B29C42C5200911355 /* GoogleSignIn */; };
+		1962707E29C42C5200911355 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1962707D29C42C5200911355 /* GoogleSignInSwift */; };
+		1962708029C42D1D00911355 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1962707F29C42D1C00911355 /* GoogleService-Info.plist */; };
+		210FFCACD3A41CCB08CD336D /* Pods_CopWatchNYC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 605E71779E12B6AEAFF067F4 /* Pods_CopWatchNYC.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		13FFA2B7C7EB994922830A74 /* Pods-CopWatchNYC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CopWatchNYC.debug.xcconfig"; path = "Target Support Files/Pods-CopWatchNYC/Pods-CopWatchNYC.debug.xcconfig"; sourceTree = "<group>"; };
 		1962703129C4290C00911355 /* CopWatchNYC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CopWatchNYC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1962703429C4290C00911355 /* CopWatchNYCApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopWatchNYCApp.swift; sourceTree = "<group>"; };
 		1962703629C4290C00911355 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,6 +61,18 @@
 		1962705029C4291200911355 /* CopWatchNYCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CopWatchNYCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1962705429C4291200911355 /* CopWatchNYCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopWatchNYCUITests.swift; sourceTree = "<group>"; };
 		1962705629C4291200911355 /* CopWatchNYCUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopWatchNYCUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1962706829C42A0B00911355 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		1962706A29C42A1F00911355 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		1962706C29C42A9F00911355 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
+		1962706E29C42AD500911355 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		1962707029C42ADF00911355 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		1962707229C42AE700911355 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		1962707429C42B1000911355 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1962707629C42B1800911355 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		1962707F29C42D1C00911355 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1962708129C42DAD00911355 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		605E71779E12B6AEAFF067F4 /* Pods_CopWatchNYC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CopWatchNYC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		66E6B57789829F3E09815238 /* Pods-CopWatchNYC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CopWatchNYC.release.xcconfig"; path = "Target Support Files/Pods-CopWatchNYC/Pods-CopWatchNYC.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +80,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1962707E29C42C5200911355 /* GoogleSignInSwift in Frameworks */,
+				210FFCACD3A41CCB08CD336D /* Pods_CopWatchNYC.framework in Frameworks */,
+				1962707C29C42C5200911355 /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,9 +107,10 @@
 			isa = PBXGroup;
 			children = (
 				1962703329C4290C00911355 /* CopWatchNYC */,
-				1962704929C4291100911355 /* CopWatchNYCTests */,
-				1962705329C4291200911355 /* CopWatchNYCUITests */,
+				1962706329C4292100911355 /* Unit Tests */,
 				1962703229C4290C00911355 /* Products */,
+				5D5CDB1C9551CFE4C38D7B10 /* Pods */,
+				9F6EA42D888FDC275050A79C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,11 +127,14 @@
 		1962703329C4290C00911355 /* CopWatchNYC */ = {
 			isa = PBXGroup;
 			children = (
-				1962703429C4290C00911355 /* CopWatchNYCApp.swift */,
-				1962703629C4290C00911355 /* ContentView.swift */,
-				1962703829C4291100911355 /* Assets.xcassets */,
-				1962703D29C4291100911355 /* Persistence.swift */,
+				1962708129C42DAD00911355 /* Info.plist */,
+				1962706629C429A700911355 /* Model */,
+				1962706529C429A500911355 /* View */,
+				1962706429C429A200911355 /* Controller */,
+				1962706729C429CB00911355 /* Extensions */,
 				1962703F29C4291100911355 /* CopWatchNYC.xcdatamodeld */,
+				1962707F29C42D1C00911355 /* GoogleService-Info.plist */,
+				1962703829C4291100911355 /* Assets.xcassets */,
 				1962703A29C4291100911355 /* Preview Content */,
 			);
 			path = CopWatchNYC;
@@ -133,6 +165,71 @@
 			path = CopWatchNYCUITests;
 			sourceTree = "<group>";
 		};
+		1962706329C4292100911355 /* Unit Tests */ = {
+			isa = PBXGroup;
+			children = (
+				1962704929C4291100911355 /* CopWatchNYCTests */,
+				1962705329C4291200911355 /* CopWatchNYCUITests */,
+			);
+			path = "Unit Tests";
+			sourceTree = "<group>";
+		};
+		1962706429C429A200911355 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1962703429C4290C00911355 /* CopWatchNYCApp.swift */,
+				1962703629C4290C00911355 /* ContentView.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1962706529C429A500911355 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1962706C29C42A9F00911355 /* LogInView.swift */,
+				1962706E29C42AD500911355 /* SignUpView.swift */,
+				1962707029C42ADF00911355 /* AuthView.swift */,
+				1962707229C42AE700911355 /* MapView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1962706629C429A700911355 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1962703D29C4291100911355 /* Persistence.swift */,
+				1962707429C42B1000911355 /* AppDelegate.swift */,
+				1962707629C42B1800911355 /* LocationManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1962706729C429CB00911355 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1962706829C42A0B00911355 /* String.swift */,
+				1962706A29C42A1F00911355 /* View.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5D5CDB1C9551CFE4C38D7B10 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				13FFA2B7C7EB994922830A74 /* Pods-CopWatchNYC.debug.xcconfig */,
+				66E6B57789829F3E09815238 /* Pods-CopWatchNYC.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		9F6EA42D888FDC275050A79C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				605E71779E12B6AEAFF067F4 /* Pods_CopWatchNYC.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -140,15 +237,21 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1962705A29C4291200911355 /* Build configuration list for PBXNativeTarget "CopWatchNYC" */;
 			buildPhases = (
+				AF4E35CB3FDB2CDE7E940C99 /* [CP] Check Pods Manifest.lock */,
 				1962702D29C4290C00911355 /* Sources */,
 				1962702E29C4290C00911355 /* Frameworks */,
 				1962702F29C4290C00911355 /* Resources */,
+				4317DB008B55D97EE8D505CE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = CopWatchNYC;
+			packageProductDependencies = (
+				1962707B29C42C5200911355 /* GoogleSignIn */,
+				1962707D29C42C5200911355 /* GoogleSignInSwift */,
+			);
 			productName = CopWatchNYC;
 			productReference = 1962703129C4290C00911355 /* CopWatchNYC.app */;
 			productType = "com.apple.product-type.application";
@@ -221,6 +324,9 @@
 				Base,
 			);
 			mainGroup = 1962702829C4290C00911355;
+			packageReferences = (
+				1962707A29C42C5200911355 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+			);
 			productRefGroup = 1962703229C4290C00911355 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -238,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1962703C29C4291100911355 /* Preview Assets.xcassets in Resources */,
+				1962708029C42D1D00911355 /* GoogleService-Info.plist in Resources */,
 				1962703929C4291100911355 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,15 +365,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4317DB008B55D97EE8D505CE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CopWatchNYC/Pods-CopWatchNYC-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CopWatchNYC/Pods-CopWatchNYC-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CopWatchNYC/Pods-CopWatchNYC-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF4E35CB3FDB2CDE7E940C99 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CopWatchNYC-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1962702D29C4290C00911355 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1962707529C42B1000911355 /* AppDelegate.swift in Sources */,
 				1962703E29C4291100911355 /* Persistence.swift in Sources */,
+				1962706D29C42A9F00911355 /* LogInView.swift in Sources */,
 				1962703729C4290C00911355 /* ContentView.swift in Sources */,
+				1962706B29C42A1F00911355 /* View.swift in Sources */,
+				1962706F29C42AD500911355 /* SignUpView.swift in Sources */,
+				1962706929C42A0B00911355 /* String.swift in Sources */,
 				1962703529C4290C00911355 /* CopWatchNYCApp.swift in Sources */,
+				1962707729C42B1800911355 /* LocationManager.swift in Sources */,
+				1962707329C42AE700911355 /* MapView.swift in Sources */,
 				1962704129C4291100911355 /* CopWatchNYC.xcdatamodeld in Sources */,
+				1962707129C42ADF00911355 /* AuthView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +576,7 @@
 		};
 		1962705B29C4291200911355 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13FFA2B7C7EB994922830A74 /* Pods-CopWatchNYC.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -427,6 +585,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"CopWatchNYC/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CopWatchNYC/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -447,6 +606,7 @@
 		};
 		1962705C29C4291200911355 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 66E6B57789829F3E09815238 /* Pods-CopWatchNYC.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -455,6 +615,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"CopWatchNYC/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CopWatchNYC/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -585,6 +746,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1962707A29C42C5200911355 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1962707B29C42C5200911355 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1962707A29C42C5200911355 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		1962707D29C42C5200911355 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1962707A29C42C5200911355 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		1962703F29C4291100911355 /* CopWatchNYC.xcdatamodeld */ = {
