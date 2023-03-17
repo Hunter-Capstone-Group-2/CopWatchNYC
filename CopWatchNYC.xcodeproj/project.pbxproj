@@ -1,0 +1,603 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1962703529C4290C00911355 /* CopWatchNYCApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1962703429C4290C00911355 /* CopWatchNYCApp.swift */; };
+		1962703729C4290C00911355 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1962703629C4290C00911355 /* ContentView.swift */; };
+		1962703929C4291100911355 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1962703829C4291100911355 /* Assets.xcassets */; };
+		1962703C29C4291100911355 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1962703B29C4291100911355 /* Preview Assets.xcassets */; };
+		1962703E29C4291100911355 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1962703D29C4291100911355 /* Persistence.swift */; };
+		1962704129C4291100911355 /* CopWatchNYC.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1962703F29C4291100911355 /* CopWatchNYC.xcdatamodeld */; };
+		1962704B29C4291200911355 /* CopWatchNYCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1962704A29C4291200911355 /* CopWatchNYCTests.swift */; };
+		1962705529C4291200911355 /* CopWatchNYCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1962705429C4291200911355 /* CopWatchNYCUITests.swift */; };
+		1962705729C4291200911355 /* CopWatchNYCUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1962705629C4291200911355 /* CopWatchNYCUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1962704729C4291100911355 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1962702929C4290C00911355 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1962703029C4290C00911355;
+			remoteInfo = CopWatchNYC;
+		};
+		1962705129C4291200911355 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1962702929C4290C00911355 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1962703029C4290C00911355;
+			remoteInfo = CopWatchNYC;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1962703129C4290C00911355 /* CopWatchNYC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CopWatchNYC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1962703429C4290C00911355 /* CopWatchNYCApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopWatchNYCApp.swift; sourceTree = "<group>"; };
+		1962703629C4290C00911355 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1962703829C4291100911355 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1962703B29C4291100911355 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1962703D29C4291100911355 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		1962704029C4291100911355 /* CopWatchNYC.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CopWatchNYC.xcdatamodel; sourceTree = "<group>"; };
+		1962704629C4291100911355 /* CopWatchNYCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CopWatchNYCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1962704A29C4291200911355 /* CopWatchNYCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopWatchNYCTests.swift; sourceTree = "<group>"; };
+		1962705029C4291200911355 /* CopWatchNYCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CopWatchNYCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1962705429C4291200911355 /* CopWatchNYCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopWatchNYCUITests.swift; sourceTree = "<group>"; };
+		1962705629C4291200911355 /* CopWatchNYCUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopWatchNYCUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1962702E29C4290C00911355 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1962704329C4291100911355 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1962704D29C4291200911355 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1962702829C4290C00911355 = {
+			isa = PBXGroup;
+			children = (
+				1962703329C4290C00911355 /* CopWatchNYC */,
+				1962704929C4291100911355 /* CopWatchNYCTests */,
+				1962705329C4291200911355 /* CopWatchNYCUITests */,
+				1962703229C4290C00911355 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1962703229C4290C00911355 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1962703129C4290C00911355 /* CopWatchNYC.app */,
+				1962704629C4291100911355 /* CopWatchNYCTests.xctest */,
+				1962705029C4291200911355 /* CopWatchNYCUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1962703329C4290C00911355 /* CopWatchNYC */ = {
+			isa = PBXGroup;
+			children = (
+				1962703429C4290C00911355 /* CopWatchNYCApp.swift */,
+				1962703629C4290C00911355 /* ContentView.swift */,
+				1962703829C4291100911355 /* Assets.xcassets */,
+				1962703D29C4291100911355 /* Persistence.swift */,
+				1962703F29C4291100911355 /* CopWatchNYC.xcdatamodeld */,
+				1962703A29C4291100911355 /* Preview Content */,
+			);
+			path = CopWatchNYC;
+			sourceTree = "<group>";
+		};
+		1962703A29C4291100911355 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				1962703B29C4291100911355 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1962704929C4291100911355 /* CopWatchNYCTests */ = {
+			isa = PBXGroup;
+			children = (
+				1962704A29C4291200911355 /* CopWatchNYCTests.swift */,
+			);
+			path = CopWatchNYCTests;
+			sourceTree = "<group>";
+		};
+		1962705329C4291200911355 /* CopWatchNYCUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1962705429C4291200911355 /* CopWatchNYCUITests.swift */,
+				1962705629C4291200911355 /* CopWatchNYCUITestsLaunchTests.swift */,
+			);
+			path = CopWatchNYCUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1962703029C4290C00911355 /* CopWatchNYC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1962705A29C4291200911355 /* Build configuration list for PBXNativeTarget "CopWatchNYC" */;
+			buildPhases = (
+				1962702D29C4290C00911355 /* Sources */,
+				1962702E29C4290C00911355 /* Frameworks */,
+				1962702F29C4290C00911355 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CopWatchNYC;
+			productName = CopWatchNYC;
+			productReference = 1962703129C4290C00911355 /* CopWatchNYC.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1962704529C4291100911355 /* CopWatchNYCTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1962705D29C4291200911355 /* Build configuration list for PBXNativeTarget "CopWatchNYCTests" */;
+			buildPhases = (
+				1962704229C4291100911355 /* Sources */,
+				1962704329C4291100911355 /* Frameworks */,
+				1962704429C4291100911355 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1962704829C4291100911355 /* PBXTargetDependency */,
+			);
+			name = CopWatchNYCTests;
+			productName = CopWatchNYCTests;
+			productReference = 1962704629C4291100911355 /* CopWatchNYCTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1962704F29C4291200911355 /* CopWatchNYCUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1962706029C4291200911355 /* Build configuration list for PBXNativeTarget "CopWatchNYCUITests" */;
+			buildPhases = (
+				1962704C29C4291200911355 /* Sources */,
+				1962704D29C4291200911355 /* Frameworks */,
+				1962704E29C4291200911355 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1962705229C4291200911355 /* PBXTargetDependency */,
+			);
+			name = CopWatchNYCUITests;
+			productName = CopWatchNYCUITests;
+			productReference = 1962705029C4291200911355 /* CopWatchNYCUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1962702929C4290C00911355 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					1962703029C4290C00911355 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					1962704529C4291100911355 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 1962703029C4290C00911355;
+					};
+					1962704F29C4291200911355 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 1962703029C4290C00911355;
+					};
+				};
+			};
+			buildConfigurationList = 1962702C29C4290C00911355 /* Build configuration list for PBXProject "CopWatchNYC" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1962702829C4290C00911355;
+			productRefGroup = 1962703229C4290C00911355 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1962703029C4290C00911355 /* CopWatchNYC */,
+				1962704529C4291100911355 /* CopWatchNYCTests */,
+				1962704F29C4291200911355 /* CopWatchNYCUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1962702F29C4290C00911355 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1962703C29C4291100911355 /* Preview Assets.xcassets in Resources */,
+				1962703929C4291100911355 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1962704429C4291100911355 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1962704E29C4291200911355 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1962702D29C4290C00911355 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1962703E29C4291100911355 /* Persistence.swift in Sources */,
+				1962703729C4290C00911355 /* ContentView.swift in Sources */,
+				1962703529C4290C00911355 /* CopWatchNYCApp.swift in Sources */,
+				1962704129C4291100911355 /* CopWatchNYC.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1962704229C4291100911355 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1962704B29C4291200911355 /* CopWatchNYCTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1962704C29C4291200911355 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1962705729C4291200911355 /* CopWatchNYCUITestsLaunchTests.swift in Sources */,
+				1962705529C4291200911355 /* CopWatchNYCUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1962704829C4291100911355 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1962703029C4290C00911355 /* CopWatchNYC */;
+			targetProxy = 1962704729C4291100911355 /* PBXContainerItemProxy */;
+		};
+		1962705229C4291200911355 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1962703029C4290C00911355 /* CopWatchNYC */;
+			targetProxy = 1962705129C4291200911355 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1962705829C4291200911355 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1962705929C4291200911355 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1962705B29C4291200911355 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CopWatchNYC/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sachin.CopWatchNYC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1962705C29C4291200911355 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CopWatchNYC/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sachin.CopWatchNYC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1962705E29C4291200911355 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sachin.CopWatchNYCTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CopWatchNYC.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CopWatchNYC";
+			};
+			name = Debug;
+		};
+		1962705F29C4291200911355 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sachin.CopWatchNYCTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CopWatchNYC.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CopWatchNYC";
+			};
+			name = Release;
+		};
+		1962706129C4291200911355 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sachin.CopWatchNYCUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CopWatchNYC;
+			};
+			name = Debug;
+		};
+		1962706229C4291200911355 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sachin.CopWatchNYCUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CopWatchNYC;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1962702C29C4290C00911355 /* Build configuration list for PBXProject "CopWatchNYC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1962705829C4291200911355 /* Debug */,
+				1962705929C4291200911355 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1962705A29C4291200911355 /* Build configuration list for PBXNativeTarget "CopWatchNYC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1962705B29C4291200911355 /* Debug */,
+				1962705C29C4291200911355 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1962705D29C4291200911355 /* Build configuration list for PBXNativeTarget "CopWatchNYCTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1962705E29C4291200911355 /* Debug */,
+				1962705F29C4291200911355 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1962706029C4291200911355 /* Build configuration list for PBXNativeTarget "CopWatchNYCUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1962706129C4291200911355 /* Debug */,
+				1962706229C4291200911355 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1962703F29C4291100911355 /* CopWatchNYC.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1962704029C4291100911355 /* CopWatchNYC.xcdatamodel */,
+			);
+			currentVersion = 1962704029C4291100911355 /* CopWatchNYC.xcdatamodel */;
+			path = CopWatchNYC.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 1962702929C4290C00911355 /* Project object */;
+}
