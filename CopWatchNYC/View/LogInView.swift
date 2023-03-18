@@ -118,8 +118,15 @@ struct LogInview: View {
                             }
                             // if user is authorized change view to mapview
                             if let authResult = authResult {
-                                print(authResult.user.uid)
-                                path.append("NavBarView")
+                                let user = authResult.user
+                                print(user.uid)
+                                
+                                if user.isEmailVerified {
+                                    path.append("NavBarView")
+                                } else {
+                                    print("user not email verified")
+                                }
+
                             }
                             
                         }

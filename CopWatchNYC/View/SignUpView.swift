@@ -18,9 +18,9 @@ struct SignUpview: View {
     @State private var showError = false
     @State private var showAlert = false
     var passwordsMatch: Bool {
-         return password == confirmPassword
-     }
-
+        return password == confirmPassword
+    }
+    
     var body: some View {
         ZStack{
             Color("Color 2").edgesIgnoringSafeArea(.all)
@@ -71,9 +71,9 @@ struct SignUpview: View {
                     HStack {
                         Image(systemName: "lock")
                         SecureField("Password", text: $password)
-
+                        
                         Spacer()
-
+                        
                         if(password.count != 0) {
                             Image(systemName: password.isValidPassword(password) ? "checkmark" : "xmark")
                                 .fontWeight(.bold)
@@ -87,21 +87,21 @@ struct SignUpview: View {
                             .stroke(lineWidth: 2)
                             .foregroundColor(.white)
                     }
-                        .padding()
-                 
+                    .padding()
+                    
                     HStack {
                         
                         Image(systemName: "lock")
                         SecureField("Confirm Password", text: $confirmPassword)
                         
                         Spacer()
-        
+                        
                         if confirmPassword.count != 0 {
                             Image(systemName: passwordsMatch ? "checkmark" : "xmark")
                                 .fontWeight(.bold)
                                 .foregroundColor(passwordsMatch ? .green : .red)
                         }
-
+                        
                     }
                     .foregroundColor(.white)
                     .padding()
@@ -112,18 +112,18 @@ struct SignUpview: View {
                     }
                     .padding()
                     Text("(Password must contain 6 characters, an uppercase, and symbol.)")
-                               .foregroundColor(.gray)
-                               .font(.caption)
+                        .foregroundColor(.gray)
+                        .font(.caption)
                 }
                 
-
-               
-
                 
                 
-              
                 
-  
+                
+                
+                
+                
+                
                 
                 
                 
@@ -157,16 +157,19 @@ struct SignUpview: View {
                                 print(error)
                                 return
                             }
-
-                            if let authResult = authResult {
-                                print(authResult.user.uid)
+                            
+                            if let user = authResult?.user {
+                                print(user.uid)
+                                user.sendEmailVerification()
+                                print("email verifcation sent")
                             }
                         }
+                        
                     } else {
                         // Display an error message
                         showAlert = true
                     }
-
+                    
                     
                 } label: {
                     Text("Register your Account ")
