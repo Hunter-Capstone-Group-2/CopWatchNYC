@@ -19,7 +19,7 @@ struct Mapview: View {
             // Create the Map instance here
             Map(coordinateRegion: $viewModel.region,interactionModes: [.all], showsUserLocation: true )
                 .ignoresSafeArea()
-                .accentColor(Color(.systemPink))
+                .accentColor(Color(.systemGreen))
             // Add a semi-transparent background color to the map
 //            Color(.systemBackground)
 //                .opacity(0.1)
