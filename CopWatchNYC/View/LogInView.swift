@@ -119,7 +119,7 @@ struct LogInview: View {
                             // if user is authorized change view to mapview
                             if let authResult = authResult {
                                 print(authResult.user.uid)
-                                path.append("Mapview")
+                                path.append("NavBarView")
                             }
                             
                         }
@@ -196,8 +196,8 @@ struct LogInview: View {
                     
                     // sets path to mapview upon clicking
                     .navigationDestination(for: String.self) { view in
-                        if view == "Mapview" {
-                            Mapview()
+                        if view == "NavBarView" {
+                            NavBarView()
                         }
                     }
                     
@@ -210,7 +210,7 @@ struct LogInview: View {
         .onAppear {
             // if logged in when app runs, navigate to map and skip login
             if Auth.auth().currentUser != nil {
-                path.append("Mapview")
+                path.append("NavBarView")
             }
         }
     }
