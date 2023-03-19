@@ -66,6 +66,8 @@ struct Accountview: View {
                         }
                     }
                 }
+                .scrollContentBackground(.hidden)
+                .background(Color("Color 1"))
                 Spacer()
             }
             .background(Color("Color 1"))

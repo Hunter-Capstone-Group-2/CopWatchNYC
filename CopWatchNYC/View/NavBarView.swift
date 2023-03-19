@@ -36,9 +36,9 @@ struct NavBarView: View {
                         }
                 }
                 .tint(Color.blue) // The color of the tabBar item that is selected
-                
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
         

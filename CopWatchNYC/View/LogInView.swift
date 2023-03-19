@@ -24,20 +24,16 @@ struct LogInview: View {
                 Color("Color").edgesIgnoringSafeArea(.all)
                 VStack{
                     HStack{
-                        Text("CopWatchNYC")
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .foregroundColor(.white)
-                            .font(.largeTitle)
-                            .bold()
-                            .padding()
-                        
-                        
-                        Spacer()
+                        Spacer(minLength: 0)
+                                Image("Main Logo")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 300, height: 300)
+                                Spacer(minLength: 0)
                     }
-                    .padding()
-                    .padding(.top)
                     
-                    Spacer()
+                    
+                    
                     
                     HStack {
                         Image(systemName: "mail")
