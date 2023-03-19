@@ -11,7 +11,7 @@ import GoogleSignIn
 import FirebaseCore
 import Firebase
 
-struct LogInview: View {
+struct LogInView: View {
     @Binding var currentShowingView: String
     
     @State private var email: String = ""
@@ -25,11 +25,11 @@ struct LogInview: View {
                 VStack{
                     HStack{
                         Spacer(minLength: 0)
-                                Image("Main Logo")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 300, height: 300)
-                                Spacer(minLength: 0)
+                        Image("Main Logo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 300, height: 300)
+                        Spacer(minLength: 0)
                     }
                     
                     
@@ -40,7 +40,7 @@ struct LogInview: View {
                         TextField("Email", text: $email)
                             .foregroundColor(.white)
                             .colorScheme(.dark)
-                            
+                        
                         
                         Spacer()
                         
@@ -89,6 +89,29 @@ struct LogInview: View {
                     
                     .padding()
                     
+                    Button("Forgot Password?") {
+                        if email.isEmpty {
+                            let alert = UIAlertController(title: "Email Required", message: "Please enter your email address to reset your password.", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: .default))
+                            UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
+                        } else {
+                            Auth.auth().sendPasswordReset(withEmail: email) { error in
+                                if let error = error {
+                                    // Handle error
+                                    print("Error sending password reset email: \(error.localizedDescription)")
+                                } else {
+                                    // Password reset email sent successfully
+                                    let alert = UIAlertController(title: "Email Sent", message: "Password Reset Email Sent.", preferredStyle: .alert)
+                                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                                    UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
+                                }
+                            }
+                        }
+                    }
+                    .foregroundColor(.white.opacity(0.5))
+                    .padding(.top, -10)
+                    
+                    
                     Button(action: {
                         withAnimation {
                             self.currentShowingView = "signup"
@@ -100,6 +123,7 @@ struct LogInview: View {
                             .foregroundColor(.white.opacity(0.5))
                         
                     }
+                    .padding(10)
                     
                     
                     Spacer()
@@ -122,7 +146,7 @@ struct LogInview: View {
                                 } else {
                                     print("user not email verified")
                                 }
-
+                                
                             }
                             
                         }
@@ -203,19 +227,10 @@ struct LogInview: View {
                             NavBarView()
                         }
                     }
-                    
-                    
                 }
-                
-            }
-        }
-        
-        .onAppear {
-            // if logged in when app runs, navigate to map and skip login
-            if Auth.auth().currentUser != nil {
-                path.append("NavBarView")
             }
         }
     }
-    
 }
+
+

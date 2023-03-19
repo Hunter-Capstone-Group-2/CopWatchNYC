@@ -1,22 +1,18 @@
-//
-//  Signupview.swift
-//  copwatch
-//
-//  Created by Ramy on 2/23/23.
-//
-
 import SwiftUI
 import FirebaseAuth
-import Firebase
 import GoogleSignIn
+import FirebaseCore
+import Firebase
 
-struct SignUpview: View {
+
+struct SignUpView: View {
     @Binding var currentShowingView: String
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
     @State private var showError = false
     @State private var showAlert = false
+    
     var passwordsMatch: Bool {
         return password == confirmPassword
     }
@@ -25,16 +21,14 @@ struct SignUpview: View {
         ZStack{
             Color("Color 2").edgesIgnoringSafeArea(.all)
             VStack{
-                HStack{
+                HStack {
                     Spacer(minLength: 0)
-                            Image("Main Logo")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 300, height: 300)
-                            Spacer(minLength: 0)
+                    Image("Main Logo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 250, height: 250)
+                    Spacer(minLength: 0)
                 }
-                
-                
                 HStack {
                     Image(systemName: "mail")
                     TextField("Email", text: $email)
@@ -49,12 +43,14 @@ struct SignUpview: View {
                         
                     }
                 }
+                .padding(.top, -20)
                 .foregroundColor(.white)
                 .padding()
                 .overlay{
                     RoundedRectangle(cornerRadius: 15)
                         .stroke(lineWidth: 2)
                         .foregroundColor(.white)
+                        .padding(.top, -20)
                 }
                 
                 .padding()
@@ -72,12 +68,14 @@ struct SignUpview: View {
                                 .foregroundColor(password.isValidPassword(password) ? .green : .red)
                         }
                     }
+                    .padding(.top, -20)
                     .foregroundColor(.white)
                     .padding()
                     .overlay{
                         RoundedRectangle(cornerRadius: 15)
                             .stroke(lineWidth: 2)
                             .foregroundColor(.white)
+                            .padding(.top, -20)
                     }
                     .padding()
                     
@@ -95,12 +93,14 @@ struct SignUpview: View {
                         }
                         
                     }
+                    .padding(.top, -20)
                     .foregroundColor(.white)
                     .padding()
                     .overlay{
                         RoundedRectangle(cornerRadius: 15)
                             .stroke(lineWidth: 2)
                             .foregroundColor(.white)
+                            .padding(.top, -20)
                     }
                     .padding()
                     Text("(Password must contain 6 characters, an uppercase, and symbol.)")
@@ -108,36 +108,15 @@ struct SignUpview: View {
                         .font(.caption)
                 }
                 
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
                 Button(action: {
                     withAnimation {
                         self.currentShowingView = "login"
                     }
-                    
-                    
-                    
-                    
                 }) {
-                    
                     Text("Already have an account? ")
                         .padding()
                         .foregroundColor(.white)
-                    
                 }
-                
-                
-                
                 
                 Spacer()
                 Spacer()
@@ -154,6 +133,12 @@ struct SignUpview: View {
                                 print(user.uid)
                                 user.sendEmailVerification()
                                 print("email verifcation sent")
+                                let alertController = UIAlertController(title: "Email Verification Sent", message: "A verification email has been sent to your email address. Please check your inbox and follow the instructions to verify your email address.", preferredStyle: .alert)
+                                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                                    showAlert = false
+                                    currentShowingView = "login"
+                                }))
+                                UIApplication.shared.windows.first?.rootViewController?.present(alertController, animated: true, completion: nil)
                             }
                         }
                         
@@ -161,8 +146,6 @@ struct SignUpview: View {
                         // Display an error message
                         showAlert = true
                     }
-                    
-                    
                 } label: {
                     Text("Register your Account ")
                         .foregroundColor(.black)
@@ -170,76 +153,85 @@ struct SignUpview: View {
                         .bold()
                         .frame(maxWidth: .infinity)
                         .padding()
-                    
                         .background(
                             RoundedRectangle(cornerRadius: 100)
                                 .fill(Color.white)
                         )
                         .padding(.horizontal )
-                    
                 }
-                
-                
-                
                 Button(action: {
-                    
-                    guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-                    
-                    // Create Google Sign In configuration object.
-                    let config = GIDConfiguration(clientID: clientID)
-                    GIDSignIn.sharedInstance.configuration = config
-                    
-                    // Start the sign in flow!
-                    GIDSignIn.sharedInstance.signIn(withPresenting: getRootViewController()) { result, error in
-                        guard error == nil else {
-                            // ...
-                            return
-                        }
-                        
-                        guard let user = result?.user,
-                              let idToken = user.idToken?.tokenString
-                        else {
-                            // ...
-                            return
-                        }
-                        
-                        let credential = GoogleAuthProvider.credential(withIDToken: idToken,
-                                                                       accessToken: user.accessToken.tokenString)
-                        
-                        Auth.auth().signIn(with: credential) { result, error in
-                            guard error == nil else {
-                                return
+                                    
+                                    guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+                                    
+                                    // Create Google Sign In configuration object.
+                                    let config = GIDConfiguration(clientID: clientID)
+                                    GIDSignIn.sharedInstance.configuration = config
+                                    
+                                    // Start the sign in flow!
+                                    GIDSignIn.sharedInstance.signIn(withPresenting: getRootViewController()) { result, error in
+                                        guard error == nil else {
+                                            // ...
+                                            return
+                                        }
+                                        
+                                        guard let user = result?.user,
+                                              let idToken = user.idToken?.tokenString
+                                        else {
+                                            // ...
+                                            return
+                                        }
+                                        
+                                        let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                                                       accessToken: user.accessToken.tokenString)
+                                        
+                                        Auth.auth().signIn(with: credential) { result, error in
+                                            guard error == nil else {
+                                                return
+                                            }
+                                            
+                                            print("Signed In")
+                                            
+                                        }
+                                    }
+                                    
+                                }) {
+                                    HStack {
+                                        Image("Google Logo")
+                                            .resizable()
+                                            .frame(width: 35.0, height: 35.0)
+                                        Text(" Continue with Google")
+                                    }
+                                }
+                                .foregroundColor(.white)
+                                .font(.title3)
+                                .bold()
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                
+                                .background(
+                                    RoundedRectangle(cornerRadius: 100)
+                                        .fill(Color.black )
+                                )
+                                .padding(.horizontal )
+                                
+                                
+                                
                             }
                             
-                            print("Signed In")
-                        }
-                    }
+                        
                     
-                }) {
-                    HStack {
-                        Image("Google Logo")
-                            .resizable()
-                            .frame(width: 35.0, height: 35.0)
-                        Text(" Continue with Google")
-                    }
+                
+                
+                // Display an alert if passwords do not match
+                .alert(isPresented: $showAlert) {
+                    Alert(
+                        title: Text("Passwords do not match"),
+                        message: Text("Please make sure your passwords match."),
+                        dismissButton: .default(Text("OK"))
+                    )
                 }
-                .foregroundColor(.white)
-                .font(.title3)
-                .bold()
-                .frame(maxWidth: .infinity)
-                .padding()
-                
-                .background(
-                    RoundedRectangle(cornerRadius: 100)
-                        .fill(Color.black )
-                )
-                .padding(.horizontal )
-                
-                
-                
             }
-            
         }
     }
-}
+
 
