@@ -16,7 +16,9 @@ struct LogInView: View {
     
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var errorMessage = ""
     @State private var path = NavigationPath()
+    @State private var isPasswordVisible = false
     
     var body: some View {
         NavigationStack(path: $path) {
@@ -28,12 +30,15 @@ struct LogInView: View {
                         Image("Main Logo")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 300, height: 300)
+                            .frame(width: 350, height: 350)
                         Spacer(minLength: 0)
                     }
+                    .padding(.bottom, -50)
                     
-                    
-                    
+                    Text(errorMessage)
+                        .foregroundColor(.red)
+                        .padding(.top, -30)
+                        .padding(.bottom, -50)
                     
                     HStack {
                         Image(systemName: "mail")
@@ -65,9 +70,16 @@ struct LogInView: View {
                     
                     HStack {
                         Image(systemName: "lock")
-                        SecureField("Password", text: $password)
-                            .foregroundColor(.white)
-                            .colorScheme(.dark)
+                        
+                        if isPasswordVisible {
+                            TextField("Password", text: $password)
+                                .foregroundColor(.white)
+                                .colorScheme(.dark)
+                        } else {
+                            SecureField("Password", text: $password)
+                                .foregroundColor(.white)
+                                .colorScheme(.dark)
+                        }
                         
                         Spacer()
                         
@@ -109,21 +121,39 @@ struct LogInView: View {
                         }
                     }
                     .foregroundColor(.white.opacity(0.5))
-                    .padding(.top, -10)
+                    .padding(.top, 5)
+                    .padding(.horizontal, -72)
                     
                     
-                    Button(action: {
-                        withAnimation {
-                            self.currentShowingView = "signup"
+                    HStack {
+                        
+                        Button(action: {
+                            withAnimation {
+                                self.currentShowingView = "signup"
+                            }
+                            
+                            
+                        }) {
+                            Text("Don't have an account?")
+                                .foregroundColor(.white.opacity(0.5))
+                                .padding(.horizontal, 55)
+                            
+                        }
+                        .padding(5)
+                        
+                        Button(action: {
+                            isPasswordVisible.toggle()
+                        }) {
+                            Image(systemName: isPasswordVisible ? "eye.slash" : "eye")
+                                .foregroundColor(.gray)
+                                .frame(width: 5, height: 10)
+                                .scaleEffect(1.5)
+                            
                         }
                         
-                        
-                    }) {
-                        Text("Don't have an account?")
-                            .foregroundColor(.white.opacity(0.5))
-                        
                     }
-                    .padding(10)
+                    
+                    
                     
                     
                     Spacer()
@@ -133,18 +163,27 @@ struct LogInView: View {
                         
                         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
                             if let error = error {
-                                print(error)
-                                return
+                                print(error.localizedDescription)
+                                
+                                if (error.localizedDescription == "The password is invalid or the user does not have a password.") {
+                                    errorMessage = "The email or password is invalid!"
+                                } else if (error.localizedDescription == "There is no user record corresponding to this identifier. The user may have been deleted.") {
+                                    errorMessage = "The account does not exist!"
+                                } else {
+                                    return
+                                }
+                                
                             }
                             // if user is authorized change view to mapview
                             if let authResult = authResult {
                                 let user = authResult.user
-                                print(user.uid)
+                                //print(user.uid)
                                 
                                 if user.isEmailVerified {
+                                    errorMessage = ""
                                     path.append("NavBarView")
                                 } else {
-                                    print("user not email verified")
+                                    errorMessage = "The email is not verified"
                                 }
                                 
                             }

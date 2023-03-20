@@ -10,8 +10,10 @@ struct SignUpView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
+    @State private var errorMessage = ""
     @State private var showError = false
     @State private var showAlert = false
+    @State private var isPasswordVisible = false
     
     var passwordsMatch: Bool {
         return password == confirmPassword
@@ -26,9 +28,15 @@ struct SignUpView: View {
                     Image("Main Logo")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 250, height: 250)
+                        .frame(width: 350, height: 250)
                     Spacer(minLength: 0)
                 }
+                
+                Text(errorMessage)
+                    .foregroundColor(.red)
+                    .padding(.top, -30)
+                    .padding(.bottom, 10)
+                
                 HStack {
                     Image(systemName: "mail")
                     TextField("Email", text: $email)
@@ -58,7 +66,12 @@ struct SignUpView: View {
                 VStack {
                     HStack {
                         Image(systemName: "lock")
-                        SecureField("Password", text: $password)
+                        
+                        if isPasswordVisible {
+                            TextField("Password", text: $password)
+                        } else {
+                            SecureField("Password", text: $password)
+                        }
                         
                         Spacer()
                         
@@ -82,7 +95,12 @@ struct SignUpView: View {
                     HStack {
                         
                         Image(systemName: "lock")
-                        SecureField("Confirm Password", text: $confirmPassword)
+                        
+                        if isPasswordVisible {
+                            TextField("Confirm Password", text: $confirmPassword)
+                        } else {
+                            SecureField("Confirm Password", text: $confirmPassword)
+                        }
                         
                         Spacer()
                         
@@ -103,20 +121,37 @@ struct SignUpView: View {
                             .padding(.top, -20)
                     }
                     .padding()
-                    Text("(Password must contain 6 characters, an uppercase, and symbol.)")
+                    Text("(Password must contain 6 characters, an uppercase, and symbol)")
                         .foregroundColor(.gray)
                         .font(.caption)
                 }
                 
-                Button(action: {
-                    withAnimation {
-                        self.currentShowingView = "login"
+                HStack {
+                    
+                    Button(action: {
+                        withAnimation {
+                            self.currentShowingView = "login"
+                        }
+                    }) {
+                        Text("Already have an account? ")
+                            .padding()
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 20)
                     }
-                }) {
-                    Text("Already have an account? ")
-                        .padding()
-                        .foregroundColor(.white)
+                    
+                    Button(action: {
+                        isPasswordVisible.toggle()
+                    }) {
+                        Image(systemName: isPasswordVisible ? "eye.slash" : "eye")
+                            .foregroundColor(.gray)
+                            .frame(width: 10, height: 10)
+                            .scaleEffect(1.5)
+                        
+                    }
+                    
                 }
+                
+                
                 
                 Spacer()
                 Spacer()
@@ -125,14 +160,20 @@ struct SignUpView: View {
                     if password == confirmPassword {
                         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                             if let error = error {
-                                print(error)
-                                return
+                                print(error.localizedDescription)
+                                if (error.localizedDescription == "The email address is already in use by another account.") {
+                                    
+                                    errorMessage = "This email is already in use!"
+                                    
+                                } else {
+                                    return
+                                }
                             }
                             
                             if let user = authResult?.user {
-                                print(user.uid)
+                                //print(user.uid)
                                 user.sendEmailVerification()
-                                print("email verifcation sent")
+                                //print("email verifcation sent")
                                 let alertController = UIAlertController(title: "Email Verification Sent", message: "A verification email has been sent to your email address. Please check your inbox and follow the instructions to verify your email address.", preferredStyle: .alert)
                                 alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
                                     showAlert = false
@@ -160,78 +201,77 @@ struct SignUpView: View {
                         .padding(.horizontal )
                 }
                 Button(action: {
-                                    
-                                    guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-                                    
-                                    // Create Google Sign In configuration object.
-                                    let config = GIDConfiguration(clientID: clientID)
-                                    GIDSignIn.sharedInstance.configuration = config
-                                    
-                                    // Start the sign in flow!
-                                    GIDSignIn.sharedInstance.signIn(withPresenting: getRootViewController()) { result, error in
-                                        guard error == nil else {
-                                            // ...
-                                            return
-                                        }
-                                        
-                                        guard let user = result?.user,
-                                              let idToken = user.idToken?.tokenString
-                                        else {
-                                            // ...
-                                            return
-                                        }
-                                        
-                                        let credential = GoogleAuthProvider.credential(withIDToken: idToken,
-                                                                                       accessToken: user.accessToken.tokenString)
-                                        
-                                        Auth.auth().signIn(with: credential) { result, error in
-                                            guard error == nil else {
-                                                return
-                                            }
-                                            
-                                            print("Signed In")
-                                            
-                                        }
-                                    }
-                                    
-                                }) {
-                                    HStack {
-                                        Image("Google Logo")
-                                            .resizable()
-                                            .frame(width: 35.0, height: 35.0)
-                                        Text(" Continue with Google")
-                                    }
-                                }
-                                .foregroundColor(.white)
-                                .font(.title3)
-                                .bold()
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                
-                                .background(
-                                    RoundedRectangle(cornerRadius: 100)
-                                        .fill(Color.black )
-                                )
-                                .padding(.horizontal )
-                                
-                                
-                                
+                    
+                    guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+                    
+                    // Create Google Sign In configuration object.
+                    let config = GIDConfiguration(clientID: clientID)
+                    GIDSignIn.sharedInstance.configuration = config
+                    
+                    // Start the sign in flow!
+                    GIDSignIn.sharedInstance.signIn(withPresenting: getRootViewController()) { result, error in
+                        guard error == nil else {
+                            // ...
+                            return
+                        }
+                        
+                        guard let user = result?.user,
+                              let idToken = user.idToken?.tokenString
+                        else {
+                            // ...
+                            return
+                        }
+                        
+                        let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                                       accessToken: user.accessToken.tokenString)
+                        
+                        Auth.auth().signIn(with: credential) { result, error in
+                            guard error == nil else {
+                                return
                             }
                             
-                        
+                            print("Signed In")
+                            
+                        }
+                    }
                     
-                
-                
-                // Display an alert if passwords do not match
-                .alert(isPresented: $showAlert) {
-                    Alert(
-                        title: Text("Passwords do not match"),
-                        message: Text("Please make sure your passwords match."),
-                        dismissButton: .default(Text("OK"))
-                    )
+                }) {
+                    HStack {
+                        Image("Google Logo")
+                            .resizable()
+                            .frame(width: 35.0, height: 35.0)
+                        Text(" Continue with Google")
+                    }
                 }
+                .foregroundColor(.white)
+                .font(.title3)
+                .bold()
+                .frame(maxWidth: .infinity)
+                .padding()
+                
+                .background(
+                    RoundedRectangle(cornerRadius: 100)
+                        .fill(Color.black )
+                )
+                .padding(.horizontal )
+                
+                
+                
+            }
+            
+            
+            
+            
+            
+            // Display an alert if passwords do not match
+            .alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("Passwords do not match"),
+                    message: Text("Please make sure your passwords match."),
+                    dismissButton: .default(Text("OK"))
+                )
             }
         }
     }
-
+}
 
