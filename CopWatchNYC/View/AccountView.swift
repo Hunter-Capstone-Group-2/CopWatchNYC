@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Accountview: View {
+struct AccountView: View {
     @State private var profileImage: UIImage?
     @State private var username: String = "@username"
     @State private var likesCount: Int = 100
@@ -118,6 +118,6 @@ struct SettingsView: View {
 
 struct Accountview_Previews: PreviewProvider {
     static var previews: some View {
-        Accountview()
+        AccountView()
     }
 }

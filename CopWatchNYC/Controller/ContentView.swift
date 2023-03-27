@@ -8,7 +8,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        AuthView()
+        MapView() //! REMEMBER TO CHANGE BACK TO AUTHVIEW()
 
     }
 }

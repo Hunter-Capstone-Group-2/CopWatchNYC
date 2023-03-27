@@ -4,12 +4,10 @@ import MapKit
 import CoreLocation
 
 // Define a view that displays a Map view with a semi-transparent background color
-struct Mapview: View {
+struct MapView: View {
     
     // Define a state variable to hold the coordinate region for the Map view
     @StateObject var locationManager = LocationManager()
-    
-    // Define a state variable to hold the view model for the Map view
     @StateObject private var viewModel = ContentViewModel()
 
     var body: some View {
@@ -20,9 +18,6 @@ struct Mapview: View {
             Map(coordinateRegion: $viewModel.region,interactionModes: [.all], showsUserLocation: true )
                 .ignoresSafeArea()
                 .accentColor(Color(.systemGreen))
-            // Add a semi-transparent background color to the map
-//            Color(.systemBackground)
-//                .opacity(0.1)
         }
         
         // Set the color scheme to dark, and ignore safe areas to extend to the edges of the screen
@@ -52,7 +47,7 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
     // Define a published variable to hold the coordinate region for the Map view
     @Published var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 40.7128, longitude: -74.0060),
-        span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+        span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
     )
     
     // Define a location manager variable
@@ -75,12 +70,19 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
             // Initialize the location manager and set the delegate to self
             locationManager = CLLocationManager()
             locationManager?.delegate = self
+
+            // Wait for the authorization status to change before requesting location authorization
+            if CLLocationManager.authorizationStatus() == .notDetermined {
+                locationManager?.requestAlwaysAuthorization()
+            }
         } else {
             // Show an alert if location services are not enabled
             print("Show an alert")
         }
     }
+
     
+
     // Check the current authorization status for location services
     private func checkLocationAuthorization() {
         // Make sure the locationManager is not nil
@@ -104,7 +106,7 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
                 break
         }
     }
-    
+
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         // Call the checkLocationAuthorization function when the authorization status changes
         checkLocationAuthorization()
