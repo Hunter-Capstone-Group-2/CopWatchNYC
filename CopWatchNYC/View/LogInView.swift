@@ -39,6 +39,7 @@ struct LogInView: View {
                         .foregroundColor(.red)
                         .padding(.top, -30)
                         .padding(.bottom, -50)
+                        .multilineTextAlignment(.center)
                     
                     HStack {
                         Image(systemName: "mail")
@@ -169,6 +170,8 @@ struct LogInView: View {
                                     errorMessage = "The email or password is invalid!"
                                 } else if (error.localizedDescription == "There is no user record corresponding to this identifier. The user may have been deleted.") {
                                     errorMessage = "The account does not exist!"
+                                } else if (error.localizedDescription == "Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later.") {
+                                    errorMessage = "Account locked because of too many attempts. Please try again later."
                                 } else {
                                     return
                                 }
@@ -236,6 +239,7 @@ struct LogInView: View {
                                     return
                                 }
                                 
+                                path.append("NavBarView")
                                 print("Signed In")
                             }
                         }
