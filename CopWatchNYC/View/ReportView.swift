@@ -10,6 +10,7 @@ import SwiftUI
 struct ReportView: View {
     @State private var helpfulInformation: String = ""
     @State private var images: [UIImage] = []
+    @State private var selectedTitle: String = ""
 
     struct NoBorderButtonStyle: ButtonStyle {
         func makeBody(configuration: Configuration) -> some View {
@@ -26,17 +27,51 @@ struct ReportView: View {
         Form {
             Section(header: Text("Report Title:")
                         .foregroundColor(.white)) {
-                Text("Sighting of Police officers")
+                HStack {
+                    if selectedTitle.isEmpty {
+                        Text("Choose a Report Title...")
+                            .foregroundColor(.gray)
+                    } else {
+                        Text(selectedTitle)
+                    }
+                    Spacer()
+                    Menu {
+                        Button(action: {
+                            selectedTitle = "Cop Presence Nearby"
+                        }) {
+                            Text("Cop Presence Nearby")
+                        }
+                        Button(action: {
+                            selectedTitle = "Cop in Subway Station"
+                        }) {
+                            Text("Cop in Subway Station")
+                        }
+                    } label: {
+                        Image(systemName: "chevron.down")
+                            .foregroundColor(.blue)
+                    }
+                    .foregroundColor(.blue)
+                }
             }
 
             Section(header: Text("Location:")
                         .foregroundColor(.white)) {
-                TextField("Enter location", text: .constant("68 Lexington Ave, NY, New York"))
+                TextField("Enter location", text: .constant("695 Park Ave, New York, NY 10065"))
             }
 
             Section(header: Text("Description:")
                         .foregroundColor(.white)) {
-                TextEditor(text: $helpfulInformation)
+                ZStack(alignment: .topLeading) {
+                    if helpfulInformation.isEmpty {
+                        Text("Briefly describe what you saw, add any helpful information, including amount of officers, exact location, badge numbers, etc....")
+                            .foregroundColor(.gray)
+                            .padding(.horizontal, 4)
+                            .padding(.vertical, 8)
+                    }
+                    TextEditor(text: $helpfulInformation)
+                        .frame(minHeight: 200)
+                        .padding(.horizontal, 4)
+                }
             }
 
             Section(header: Text("Add images:")
@@ -73,10 +108,8 @@ struct ReportView: View {
     }
 }
 
-
-struct Reportview_Previews: PreviewProvider {
+struct ReportView_Previews: PreviewProvider {
     static var previews: some View {
         ReportView()
     }
 }
-

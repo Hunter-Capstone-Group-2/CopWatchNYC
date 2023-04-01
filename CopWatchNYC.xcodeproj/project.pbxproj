@@ -31,6 +31,7 @@
 		CB51E46129C66FBD00EF43BC /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51E46029C66FBD00EF43BC /* AccountView.swift */; };
 		CB51E46329C6708400EF43BC /* NavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51E46229C6708400EF43BC /* NavBarView.swift */; };
 		CB51E46529C670CC00EF43BC /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51E46429C670CC00EF43BC /* ReportView.swift */; };
+		CB94158A29D8D02100DFB5BE /* PinnedReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB94158929D8D02000DFB5BE /* PinnedReportView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		CB51E46029C66FBD00EF43BC /* AccountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		CB51E46229C6708400EF43BC /* NavBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavBarView.swift; sourceTree = "<group>"; };
 		CB51E46429C670CC00EF43BC /* ReportView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
+		CB94158929D8D02000DFB5BE /* PinnedReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedReportView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 				CB51E46029C66FBD00EF43BC /* AccountView.swift */,
 				CB51E46229C6708400EF43BC /* NavBarView.swift */,
 				CB51E46429C670CC00EF43BC /* ReportView.swift */,
+				CB94158929D8D02000DFB5BE /* PinnedReportView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				1962703729C4290C00911355 /* ContentView.swift in Sources */,
 				CB51E46329C6708400EF43BC /* NavBarView.swift in Sources */,
 				1962706B29C42A1F00911355 /* View.swift in Sources */,
+				CB94158A29D8D02100DFB5BE /* PinnedReportView.swift in Sources */,
 				1962706F29C42AD500911355 /* SignUpView.swift in Sources */,
 				1962706929C42A0B00911355 /* String.swift in Sources */,
 				CB51E46529C670CC00EF43BC /* ReportView.swift in Sources */,
