@@ -18,7 +18,7 @@ struct NavBarView: View {
         NavigationView {
             ZStack(alignment: .bottom) {
                 TabView {
-                    Mapview()
+                    MapView()
                         .tabItem {
                             Label("Home", systemImage: "house")
                         }

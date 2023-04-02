@@ -89,6 +89,17 @@ struct LogInView: View {
                                 .fontWeight(.bold)
                                 .foregroundColor(password.isValidPassword(password) ? .green : .red)
                         }
+                        Button(action: {
+                            isPasswordVisible.toggle()
+                        }) {
+                            Image(systemName: isPasswordVisible ? "eye.slash" : "eye")
+                                .foregroundColor(.gray)
+                                .frame(width: 5, height: 10)
+                                .scaleEffect(1)
+                                .padding(9)
+                            
+                        }
+                        
                         
                         
                     }
@@ -142,15 +153,7 @@ struct LogInView: View {
                         }
                         .padding(5)
                         
-                        Button(action: {
-                            isPasswordVisible.toggle()
-                        }) {
-                            Image(systemName: isPasswordVisible ? "eye.slash" : "eye")
-                                .foregroundColor(.gray)
-                                .frame(width: 5, height: 10)
-                                .scaleEffect(1.5)
-                            
-                        }
+                  
                         
                     }
                     
@@ -271,6 +274,8 @@ struct LogInView: View {
                         }
                     }
                 }
+                .padding(.bottom, 200)
+                
             }
         }
     }
