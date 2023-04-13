@@ -12,8 +12,8 @@ import FirebaseCore
 import Firebase
 
 struct LogInView: View {
-    @Binding var currentShowingView: String
     
+    @Binding var currentShowingView: String
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var errorMessage = ""
@@ -21,6 +21,7 @@ struct LogInView: View {
     @State private var isPasswordVisible = false
     
     var body: some View {
+        
         NavigationStack(path: $path) {
             ZStack{
                 Color("Color").edgesIgnoringSafeArea(.all)
@@ -46,8 +47,7 @@ struct LogInView: View {
                         TextField("Email", text: $email)
                             .foregroundColor(.white)
                             .colorScheme(.dark)
-                        
-                        
+                    
                         Spacer()
                         
                         if(email.count != 0) {
@@ -99,9 +99,7 @@ struct LogInView: View {
                                 .padding(9)
                             
                         }
-                        
-                        
-                        
+                   
                     }
                     .foregroundColor(.white)
                     .padding()
@@ -152,14 +150,9 @@ struct LogInView: View {
                             
                         }
                         .padding(5)
-                        
-                  
-                        
+                    
                     }
-                    
-                    
-                    
-                    
+         
                     Spacer()
                     Spacer()
                     
@@ -270,7 +263,7 @@ struct LogInView: View {
                     // sets path to mapview upon clicking
                     .navigationDestination(for: String.self) { view in
                         if view == "NavBarView" {
-                            NavBarView()
+                            Home()
                         }
                     }
                 }
