@@ -7,6 +7,8 @@ import Firebase
 
 struct SignUpView: View {
     @Binding var currentShowingView: String
+    @Binding var reportedLocations: [IdentifiablePin]
+    
     @State private var path = NavigationPath()
     @State private var email: String = ""
     @State private var password: String = ""
@@ -261,7 +263,7 @@ struct SignUpView: View {
                     
                     .navigationDestination(for: String.self) { view in
                         if view == "NavBarView" {
-                            NavBarView()
+                            NavBarView(reportedLocations: $reportedLocations)
                         }
                     }
                     

@@ -13,6 +13,7 @@ import Firebase
 
 struct LogInView: View {
     @Binding var currentShowingView: String
+    @Binding var reportedLocations: [IdentifiablePin]
     
     @State private var email: String = ""
     @State private var password: String = ""
@@ -270,7 +271,7 @@ struct LogInView: View {
                     // sets path to mapview upon clicking
                     .navigationDestination(for: String.self) { view in
                         if view == "NavBarView" {
-                            NavBarView()
+                            NavBarView(reportedLocations: $reportedLocations)
                         }
                     }
                 }
