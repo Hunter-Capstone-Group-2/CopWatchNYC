@@ -116,7 +116,7 @@ struct ReportView: View {
             // Section containing the "Post" button
             Section {
                 // NavigationLink to navigate to NavBarView when tapped
-                NavigationLink(destination: NavBarView(reportedLocations: $reportedLocations)) {
+                NavigationLink(destination: MapView(reportedLocations: $reportedLocations)) {
                     // "Post" button UI
                     Text("Post")
                         .font(.headline)

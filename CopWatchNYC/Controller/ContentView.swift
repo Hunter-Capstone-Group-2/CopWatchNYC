@@ -12,7 +12,7 @@ struct ContentView: View {
         // Pass the reportedLocations binding to the NavBarView and set the environmentObject to the locationManager.
         //NavBarView(reportedLocations: $reportedLocations)
         //    .environmentObject(locationManager)
-        AuthView().environmentObject(locationManager)
+        Home(reportedLocations: $reportedLocations)
     }
 }
 
