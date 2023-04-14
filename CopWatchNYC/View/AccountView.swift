@@ -12,7 +12,6 @@ struct Accountview: View {
     @State private var username: String = "@username"
     @State private var likesCount: Int = 100
     @State private var postsCount: Int = 1
-    @State var selectedTab: String = "user"
     
     var body: some View {
         NavigationView {
@@ -119,6 +118,6 @@ struct SettingsView: View {
 
 struct Accountview_Previews: PreviewProvider {
     static var previews: some View {
-        Home()
+        Accountview()
     }
 }

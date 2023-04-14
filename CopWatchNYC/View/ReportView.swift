@@ -93,7 +93,7 @@ struct ReportView: View {
             }
 
             Section {
-                NavigationLink(destination: Home()) {
+                NavigationLink(destination: NavBarView()) {
                     Text("Post")
                         .font(.headline)
                         .foregroundColor(.black)
