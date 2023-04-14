@@ -261,7 +261,7 @@ struct SignUpView: View {
                     
                     .navigationDestination(for: String.self) { view in
                         if view == "NavBarView" {
-                            NavBarView()
+                            Home()
                         }
                     }
                     

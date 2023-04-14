@@ -17,24 +17,30 @@ struct MapView: View {
                 .accentColor(Color(.systemGreen))
             
             // Add a button to return the map to the user's current location
-            VStack {
+            VStack(alignment: .trailing) {
                 HStack {
+                    Spacer()
                     Button(action: {
                         viewModel.centerOnUser()
                     }, label: {
                         Image(systemName: "location.fill")
                             .padding()
-                            .foregroundColor(.white) // Set the color of the arrow to white
-                            .background(Color.black)
+                            .foregroundColor(.white)
+                            .background(Color("Color 1"))
                             .clipShape(Circle())
                             .shadow(radius: 5)
                     })
-                    .padding(.leading)
-                    Spacer()
+                    .padding(.trailing, 10)
+                    .padding(.top, 40)
                 }
-                .padding(.top)
-                .padding(.trailing)
+                Spacer()
             }
+            .padding(.top)
+            .padding(.trailing)
+            .alignmentGuide(.trailing) { dimension in
+                dimension[.trailing]
+            }
+
         }
         .colorScheme(.dark)
         .edgesIgnoringSafeArea(.all)
