@@ -18,8 +18,6 @@ struct MapView: View {
     // Define a state variable to hold the view model for the Map view
     @StateObject private var viewModel = ContentViewModel()
     
-    @State var selectedTab: String = "user"
-    
     var body: some View {
         ZStack {
             // Display the Map with user location and reported locations
@@ -29,33 +27,27 @@ struct MapView: View {
             }
             .ignoresSafeArea() // Make the Map ignore the safe area to occupy the full screen
             .accentColor(Color(.systemGreen)) // Set the accent color for the map (e.g., the user location dot)
-            
+
             // Add a button to return the map to the user's current location
             VStack {
                 HStack {
-                    Spacer()
                     Button(action: {
                         viewModel.centerOnUser() // Center the map on the user's location when the button is tapped
                     }, label: {
                         Image(systemName: "location.fill") // Use a location icon for the button
                             .padding()
                             .foregroundColor(.white) // Set the color of the icon to white
-                            .background(Color("Color 1")) // Set the background color of the button to Color 1
+                            .background(Color.black) // Set the background color of the button to black
                             .clipShape(Circle()) // Clip the button background into a circle shape
                             .shadow(radius: 5) // Add a shadow to the button
                     })
-                    .padding(.top, 40)
-                    .padding(.trailing)
+                    .padding(.leading) // Add padding on the leading side of the button
+                    Spacer() // Add a spacer to push the button to the left side of the screen
                 }
-                Spacer()
-            }
-            .padding(.top)
-            .padding(.trailing)
-            .alignmentGuide(.trailing) { dimension in
-                dimension[.trailing]
+                .padding(.top) // Add padding to the top of the VStack
+                .padding(.trailing) // Add padding to the trailing side of the VStack
             }
         }
-
 
         .colorScheme(.dark)
         .edgesIgnoringSafeArea(.all)
@@ -120,7 +112,7 @@ struct MapView: View {
         // Add a function to center the map on the user's current location
         func centerOnUser() {
             guard let userLocation = locationManager?.location?.coordinate else { return }
-            region = MKCoordinateRegion(center: userLocation, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.1))
+            region = MKCoordinateRegion(center: userLocation, span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001))
         }
 
     }
