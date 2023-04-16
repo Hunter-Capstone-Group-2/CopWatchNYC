@@ -243,7 +243,7 @@ struct LogInView: View {
                                     return
                                 }
                                 
-                                path.append("NavBarView")
+                                path.append("Home")
                                 print("Signed In")
                             }
                         }
@@ -270,8 +270,8 @@ struct LogInView: View {
                     
                     // sets path to mapview upon clicking
                     .navigationDestination(for: String.self) { view in
-                        if view == "NavBarView" {
-                            NavBarView(reportedLocations: $reportedLocations)
+                        if view == "Home" {
+                            Home(reportedLocations: $reportedLocations)
                         }
                     }
                 }

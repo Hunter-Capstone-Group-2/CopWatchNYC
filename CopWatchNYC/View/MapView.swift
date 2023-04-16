@@ -13,10 +13,12 @@ struct MapView: View {
     // Define a state variable to hold the coordinate region for the Map view
     @StateObject var locationManager = LocationManager()
     
+    //let test = reportedLocations[0].location.latitude
     
     
     // Define a state variable to hold the view model for the Map view
     @StateObject private var viewModel = ContentViewModel()
+    @StateObject var controller = PinningController()
     
     var body: some View {
         ZStack {
@@ -43,20 +45,46 @@ struct MapView: View {
                     })
                     .padding(.leading) // Add padding on the leading side of the button
                     Spacer() // Add a spacer to push the button to the left side of the screen
+                    
+                    Button(action: {
+                        print(controller.pins[0].latitude)
+                        print("-------------------")
+                        print(controller.pins[0].longitude)
+
+                    }, label: {
+                        Image(systemName: "cross.circle.fill") // Use a location icon for the button
+                            .padding()
+                            .foregroundColor(.white) // Set the color of the icon to white
+                            .background(Color.black) // Set the background color of the button to black
+                            .clipShape(Circle()) // Clip the button background into a circle shape
+                            .shadow(radius: 5) // Add a shadow to the button
+                    })
+                    
                 }
                 .padding(.top) // Add padding to the top of the VStack
                 .padding(.trailing) // Add padding to the trailing side of the VStack
             }
         }
+        
+        
 
         .colorScheme(.dark)
         .edgesIgnoringSafeArea(.all)
         .onAppear {
             viewModel.checkIfLocationServiceIsEnabled()
             MKMapView.appearance().pointOfInterestFilter = .excludingAll
+            
+            Task {
+                    do {
+                        try await controller.fetchPins()
+                    } catch {
+                        print("Error: \(error)")
+                    }
+                }
+            }
+            
         }
-    }
-    
+        
     
     
     final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
