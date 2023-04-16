@@ -127,6 +127,4 @@ struct MapView: View {
             MapView(reportedLocations: $reportedLocations)
         }
     }
-
-
 }
