@@ -18,7 +18,7 @@ struct MapView: View {
     
     // Define a state variable to hold the view model for the Map view
     @StateObject private var viewModel = ContentViewModel()
-    @StateObject var controller = PinningController()
+    //@StateObject var controller = PinningController()
     
     var body: some View {
         ZStack {
@@ -47,9 +47,9 @@ struct MapView: View {
                     Spacer() // Add a spacer to push the button to the left side of the screen
                     
                     Button(action: {
-                        print(controller.pins[0].latitude)
+                        //print(controller.pins[0].latitude)
                         print("-------------------")
-                        print(controller.pins[0].longitude)
+                       // print(controller.pins[0].longitude)
 
                     }, label: {
                         Image(systemName: "cross.circle.fill") // Use a location icon for the button
@@ -74,13 +74,13 @@ struct MapView: View {
             viewModel.checkIfLocationServiceIsEnabled()
             MKMapView.appearance().pointOfInterestFilter = .excludingAll
             
-            Task {
-                    do {
-                        try await controller.fetchPins()
-                    } catch {
-                        print("Error: \(error)")
-                    }
-                }
+//            Task {
+//                    do {
+//                        try await controller.fetchPins()
+//                    } catch {
+//                        print("Error: \(error)")
+//                    }
+//                }
             }
             
         }

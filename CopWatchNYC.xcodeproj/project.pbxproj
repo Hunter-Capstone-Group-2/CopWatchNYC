@@ -29,8 +29,10 @@
 		1962708029C42D1D00911355 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1962707F29C42D1C00911355 /* GoogleService-Info.plist */; };
 		210FFCACD3A41CCB08CD336D /* Pods_CopWatchNYC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 605E71779E12B6AEAFF067F4 /* Pods_CopWatchNYC.framework */; };
 		CB51E46129C66FBD00EF43BC /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51E46029C66FBD00EF43BC /* AccountView.swift */; };
-		CB51E46329C6708400EF43BC /* NavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51E46229C6708400EF43BC /* NavBarView.swift */; };
 		CB51E46529C670CC00EF43BC /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51E46429C670CC00EF43BC /* ReportView.swift */; };
+		CB7852C029ECAE4A0096B805 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7852BF29ECAE4A0096B805 /* Home.swift */; };
+		CB7852C229ECAE520096B805 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7852C129ECAE520096B805 /* CustomTabBar.swift */; };
+		CB7852C429ECB0AD0096B805 /* CreateReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7852C329ECB0AD0096B805 /* CreateReportView.swift */; };
 		CB94158A29D8D02100DFB5BE /* PinnedReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB94158929D8D02000DFB5BE /* PinnedReportView.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,8 +80,10 @@
 		605E71779E12B6AEAFF067F4 /* Pods_CopWatchNYC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CopWatchNYC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66E6B57789829F3E09815238 /* Pods-CopWatchNYC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CopWatchNYC.release.xcconfig"; path = "Target Support Files/Pods-CopWatchNYC/Pods-CopWatchNYC.release.xcconfig"; sourceTree = "<group>"; };
 		CB51E46029C66FBD00EF43BC /* AccountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
-		CB51E46229C6708400EF43BC /* NavBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavBarView.swift; sourceTree = "<group>"; };
 		CB51E46429C670CC00EF43BC /* ReportView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
+		CB7852BF29ECAE4A0096B805 /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		CB7852C129ECAE520096B805 /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		CB7852C329ECB0AD0096B805 /* CreateReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReportView.swift; sourceTree = "<group>"; };
 		CB94158929D8D02000DFB5BE /* PinnedReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedReportView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -200,9 +204,11 @@
 				1962707229C42AE700911355 /* MapView.swift */,
 				1962707629C42B1800911355 /* LocationManager.swift */,
 				CB51E46029C66FBD00EF43BC /* AccountView.swift */,
-				CB51E46229C6708400EF43BC /* NavBarView.swift */,
 				CB51E46429C670CC00EF43BC /* ReportView.swift */,
 				CB94158929D8D02000DFB5BE /* PinnedReportView.swift */,
+				CB7852BF29ECAE4A0096B805 /* Home.swift */,
+				CB7852C129ECAE520096B805 /* CustomTabBar.swift */,
+				CB7852C329ECB0AD0096B805 /* CreateReportView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -428,17 +434,19 @@
 				1962703E29C4291100911355 /* Persistence.swift in Sources */,
 				1962706D29C42A9F00911355 /* LogInView.swift in Sources */,
 				1962703729C4290C00911355 /* ContentView.swift in Sources */,
-				CB51E46329C6708400EF43BC /* NavBarView.swift in Sources */,
 				1962706B29C42A1F00911355 /* View.swift in Sources */,
 				CB94158A29D8D02100DFB5BE /* PinnedReportView.swift in Sources */,
 				1962706F29C42AD500911355 /* SignUpView.swift in Sources */,
 				1962706929C42A0B00911355 /* String.swift in Sources */,
+				CB7852C229ECAE520096B805 /* CustomTabBar.swift in Sources */,
 				CB51E46529C670CC00EF43BC /* ReportView.swift in Sources */,
+				CB7852C429ECB0AD0096B805 /* CreateReportView.swift in Sources */,
 				1962703529C4290C00911355 /* CopWatchNYCApp.swift in Sources */,
 				1962707729C42B1800911355 /* LocationManager.swift in Sources */,
 				1962707329C42AE700911355 /* MapView.swift in Sources */,
 				1962704129C4291100911355 /* CopWatchNYC.xcdatamodeld in Sources */,
 				CB51E46129C66FBD00EF43BC /* AccountView.swift in Sources */,
+				CB7852C029ECAE4A0096B805 /* Home.swift in Sources */,
 				1962707129C42ADF00911355 /* AuthView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -28,7 +28,7 @@ struct Home: View {
                 Accountview()
                     .tag("user")
                 
-                ReportView(reportedLocations: $reportedLocations)
+                CreateReportView()
                     .tag("report")
                 
                 

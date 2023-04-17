@@ -6,26 +6,11 @@ struct ReportView: View {
     
     @EnvironmentObject var locationManager: LocationManager
     @Binding var reportedLocations: [IdentifiablePin]
-//    @StateObject var controller = PinningController()
-//    @ObservedObject var pinController: AddPinController
-
     private func storeReportLocation() {
         guard let userLocation = locationManager.location else { return }
         let reportLocation = userLocation.coordinate
         reportedLocations.append(IdentifiablePin(location: reportLocation))
-        
-//        pinController.longitude = reportLocation.longitude
-//        pinController.latitude = reportLocation.latitude
-        
     }
-    
-//    func printPins() {
-//        print(controller.pins[0].latitude)
-//        print("-------------------")
-//        print(controller.pins[0].longitude)
-//    }
-    
-    
 
     @State private var helpfulInformation: String = ""
     @State private var images: [UIImage] = []
@@ -96,18 +81,7 @@ struct ReportView: View {
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .buttonStyle(NoBorderButtonStyle())
                         .onTapGesture {
-                            
                             storeReportLocation()
-                            //printPins()
-                            
-//                            Task {
-//                                do {
-//                                    try await pinController.addPin()
-//                                } catch {
-//                                    print("Error: \(error)")
-//                                }
-//                            }
-                            
                         }
                 }
             }
@@ -115,18 +89,7 @@ struct ReportView: View {
         .navigationTitle("Report")
         .scrollContentBackground(.hidden)
         .background(Color("Color 2"))
-        
-//        .onAppear {
-//            Task {
-//                    do {
-//                        try await controller.fetchPins()
-//                    } catch {
-//                        print("Error: \(error)")
-//                    }
-//                }
-//            }
     }
-    
 }
 
 // Create a preview for the ReportView
