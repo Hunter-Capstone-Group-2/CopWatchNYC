@@ -13,6 +13,7 @@ struct ContentView: View {
         //NavBarView(reportedLocations: $reportedLocations)
         //    .environmentObject(locationManager)
         Home(reportedLocations: $reportedLocations)
+                    .environmentObject(locationManager)
     }
 }
 

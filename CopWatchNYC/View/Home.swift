@@ -8,40 +8,36 @@
 import SwiftUI
 
 struct Home: View {
-    
-//    init() {
-//        UITabBar.appearance().isHidden = true
-//    }
-    
+
     @State var selectedTab: String = "home"
     @Binding var reportedLocations: [IdentifiablePin]
-    
+
     var body: some View {
-        
+
         VStack(spacing: 0) {
-            
+
             TabView(selection: $selectedTab) {
-                
+
                 MapView(reportedLocations: $reportedLocations)
                     .tag("home")
-                
+
                 Accountview()
                     .tag("user")
-                
-                CreateReportView()
+
+                CreateReportView(reportedLocations: $reportedLocations) // Updated to use the new CreateReportView
                     .tag("report")
                 
-                
             }
-            
+
             //Custom Tab Bar
             CustomTabBar(selectedTab: $selectedTab)
-            
+
         }
         .background(Color("Color 2"))
-        
+
     }
 }
+
 
 //struct Home_Previews: PreviewProvider {
 //    static var previews: some View {

@@ -5,10 +5,18 @@ struct CreateReportView: View {
     @State private var secondCarouselIndex: Int = 0
     @StateObject private var addressViewModel = AddressViewModel()
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var locationManager: LocationManager
+    @Binding var reportedLocations: [IdentifiablePin] // Add this line
+
 
     let firstCarouselImages = ["subway", "public", "bus"]
     let secondCarouselImages = ["fare", "heavy", "other"]
-
+    
+    private func storeReportLocation() {
+           guard let userLocation = locationManager.location else { return }
+           let reportLocation = userLocation.coordinate
+           reportedLocations.append(IdentifiablePin(location: reportLocation))
+       }
     var body: some View {
         ZStack {
             Color("Color 1").edgesIgnoringSafeArea(.all)
@@ -44,6 +52,7 @@ struct CreateReportView: View {
                     .foregroundColor(.white)
 
                 PostButtonView {
+                    storeReportLocation()
                     presentationMode.wrappedValue.dismiss()
                 }
             }
@@ -92,7 +101,9 @@ struct PostButtonView: View {
 }
 
 struct CreateReportView_Previews: PreviewProvider {
+    @State static private var previewReportedLocations: [IdentifiablePin] = []
     static var previews: some View {
-        CreateReportView()
-    }
+           CreateReportView(reportedLocations: $previewReportedLocations)
+               .environmentObject(LocationManager())
+       }
 }
