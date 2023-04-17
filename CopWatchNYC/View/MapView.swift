@@ -25,7 +25,12 @@ struct MapView: View {
             // Display the Map with user location and reported locations
             Map(coordinateRegion: $viewModel.region, interactionModes: [.all], showsUserLocation: true, annotationItems: reportedLocations) { pin in
                 // Add MapMarker for each reported location with a red tint
-                MapMarker(coordinate: pin.location, tint: .red)
+                MapAnnotation(coordinate: pin.location) {
+                    Image("cop_icon")
+                        .resizable()
+                        .frame(width: 45, height: 45)
+                }
+
             }
             .ignoresSafeArea() // Make the Map ignore the safe area to occupy the full screen
             .accentColor(Color(.systemGreen)) // Set the accent color for the map (e.g., the user location dot)
