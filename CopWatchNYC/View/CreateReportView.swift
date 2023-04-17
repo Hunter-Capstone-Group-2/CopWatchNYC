@@ -7,6 +7,7 @@ struct CreateReportView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var locationManager: LocationManager
     @Binding var reportedLocations: [IdentifiablePin] // Add this line
+    @Binding var selectedTab: String
 
 
     let firstCarouselImages = ["subway", "public", "bus"]
@@ -51,10 +52,10 @@ struct CreateReportView: View {
                     .padding()
                     .foregroundColor(.white)
 
-                PostButtonView {
+                PostButtonView(action: {
                     storeReportLocation()
                     presentationMode.wrappedValue.dismiss()
-                }
+                }, selectedTab: $selectedTab)
             }
         }
     }
@@ -87,9 +88,13 @@ class AddressViewModel: ObservableObject {
 
 struct PostButtonView: View {
     let action: () -> Void
+    @Binding var selectedTab: String
 
     var body: some View {
-        Button(action: action) {
+        Button(action: {
+            action()
+            selectedTab = "home"
+        }) {
             Text("Post Your Report!")
                 .font(.headline)
                 .padding()
@@ -100,10 +105,12 @@ struct PostButtonView: View {
     }
 }
 
+
 struct CreateReportView_Previews: PreviewProvider {
     @State static private var previewReportedLocations: [IdentifiablePin] = []
+    @State static private var selectedTab = "report"
+
     static var previews: some View {
-           CreateReportView(reportedLocations: $previewReportedLocations)
-               .environmentObject(LocationManager())
-       }
+        CreateReportView(reportedLocations: $previewReportedLocations, selectedTab: $selectedTab)
+    }
 }

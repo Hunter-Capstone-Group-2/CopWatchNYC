@@ -24,8 +24,9 @@ struct Home: View {
                 Accountview()
                     .tag("user")
 
-                CreateReportView(reportedLocations: $reportedLocations) // Updated to use the new CreateReportView
+                CreateReportView(reportedLocations: $reportedLocations, selectedTab: $selectedTab)
                     .tag("report")
+
                 
             }
 
