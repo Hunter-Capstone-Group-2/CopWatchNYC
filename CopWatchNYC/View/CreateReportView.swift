@@ -20,42 +20,50 @@ struct CreateReportView: View {
        }
     var body: some View {
         ZStack {
-            Color("Color 1").edgesIgnoringSafeArea(.all)
+            LinearGradient(gradient: Gradient(colors: [Color("Color"), Color("Color 1")]), startPoint: .top, endPoint: .bottom)
+                    .edgesIgnoringSafeArea(.all)
 
             VStack {
                 Text("What Would You Like to Report?")
                     .font(.title)
+                    .fontWeight(.bold)
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
                     .foregroundColor(.white)
 
                 Text(selectedIndex == 0 ? "Cops in Subway Station" : (selectedIndex == 1 ? "Cops in Public" : "Cops near Bus Stop"))
-                    .font(.subheadline)
+                    .font(.headline)
                     .foregroundColor(.white)
 
                 CarouselView(selectedIndex: $selectedIndex, images: firstCarouselImages)
 
                 Text("What's Happening?")
                     .font(.title)
+                    .fontWeight(.bold)
                     .foregroundColor(.white)
 
                 Text(secondCarouselIndex == 0 ? "Checking for Fare Evaders" : (secondCarouselIndex == 1 ? "Heavy Presence" : "Add what is happening in the comments of your post!"))
-                    .font(.subheadline)
+                    .font(.headline)
                     .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
 
                 CarouselView(selectedIndex: $secondCarouselIndex, images: secondCarouselImages)
 
                 Text("Where is it Happening?")
                     .font(.title)
+                    .fontWeight(.bold)
                     .foregroundColor(.white)
 
                 TextField("123 Street, New York, NY, 12345", text: $addressViewModel.address)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
 
                 PostButtonView(action: {
                     storeReportLocation()
                     presentationMode.wrappedValue.dismiss()
                 }, selectedTab: $selectedTab)
+                .padding(.top, 20)
             }
         }
     }
@@ -66,19 +74,18 @@ struct CarouselView: View {
     let images: [String]
 
     var body: some View {
-        HStack {
-            ForEach(0..<images.count) { index in
+        TabView(selection: $selectedIndex) {
+            ForEach(0..<images.count, id: \.self) { index in
                 Image(images[index])
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 100, height: 100)
+                    .frame(width: 200, height: 200)
                     .cornerRadius(10)
                     .padding()
-                    .onTapGesture {
-                        selectedIndex = index
-                    }
+                    .tag(index)
             }
         }
+        .tabViewStyle(PageTabViewStyle())
     }
 }
 
@@ -96,7 +103,8 @@ struct PostButtonView: View {
             selectedTab = "home"
         }) {
             Text("Post Your Report!")
-                .font(.headline)
+                .font(.title)
+                .fontWeight(.bold)
                 .padding()
                 .background(Color.blue)
                 .foregroundColor(.white)

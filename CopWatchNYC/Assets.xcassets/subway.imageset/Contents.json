@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "Subway@1x.png",
+      "filename" : "subway.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Subway@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Subway@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
