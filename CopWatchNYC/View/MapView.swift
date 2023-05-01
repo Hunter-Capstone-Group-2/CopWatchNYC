@@ -43,15 +43,20 @@ struct MapView: View {
                 Map(coordinateRegion: $viewModel.region, interactionModes: [.all], showsUserLocation: true, annotationItems: reportedLocations) { pin in
                     //Pinning System
                     MapAnnotation(coordinate: pin.location) {
-                                  Button(action: {
-                                      viewModel.selectedPin = pin
-                                      print("Tapped pin: \(pin)")
-                                      print("Current reportedLocations: \(reportedLocations)")
-                                  }) {
-                                      Image("cop_icon")
-                                          .resizable()
-                                          .frame(width: 45, height: 45)
-                                  }
+                        Button(action: {
+                            if viewModel.selectedPin == pin {
+                                viewModel.selectedPin = nil // Deselect the pin if it's already selected
+                            } else {
+                                viewModel.selectedPin = pin // Otherwise, select the tapped pin
+                            }
+                            print("Tapped pin: \(pin)")
+                            print("Current reportedLocations: \(reportedLocations)")
+                        }) {
+                            Image("cop_icon")
+                                .resizable()
+                                .frame(width: 45, height: 45)
+                        }
+
                                   if viewModel.selectedPin == pin {
                                       CustomCalloutView(pin: pin)
                                   }
