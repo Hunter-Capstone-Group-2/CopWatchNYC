@@ -20,7 +20,7 @@ struct CreateReportView: View {
        }
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color("Color"), Color("Color 1")]), startPoint: .top, endPoint: .bottom)
+            LinearGradient(gradient: Gradient(colors: [Color(.black), Color("Color 1")]), startPoint: .top, endPoint: .bottom)
                     .edgesIgnoringSafeArea(.all)
 
             VStack {
@@ -49,10 +49,13 @@ struct CreateReportView: View {
 
                 CarouselView(selectedIndex: $secondCarouselIndex, images: secondCarouselImages)
 
-                Text("Where is it Happening?")
+                Text("State a general description of the area.")
                     .font(.title)
                     .fontWeight(.bold)
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
                     .foregroundColor(.white)
+                    .padding(.top, 20)
 
                 TextField("123 Street, New York, NY, 12345", text: $addressViewModel.address)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -80,7 +83,7 @@ struct CarouselView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 200, height: 200)
-                    .cornerRadius(10)
+                    .cornerRadius(20)
                     .padding()
                     .tag(index)
             }
@@ -103,10 +106,10 @@ struct PostButtonView: View {
             selectedTab = "home"
         }) {
             Text("Post Your Report!")
-                .font(.title)
+                .font(.headline)
                 .fontWeight(.bold)
                 .padding()
-                .background(Color.blue)
+                .background(Color("Color"))
                 .foregroundColor(.white)
                 .cornerRadius(8)
         }

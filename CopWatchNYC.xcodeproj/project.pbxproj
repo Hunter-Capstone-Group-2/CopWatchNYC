@@ -34,6 +34,7 @@
 		CB7852C229ECAE520096B805 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7852C129ECAE520096B805 /* CustomTabBar.swift */; };
 		CB7852C429ECB0AD0096B805 /* CreateReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7852C329ECB0AD0096B805 /* CreateReportView.swift */; };
 		CB94158A29D8D02100DFB5BE /* PinnedReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB94158929D8D02000DFB5BE /* PinnedReportView.swift */; };
+		CBF3009F29FF413800AF9905 /* RightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF3009E29FF413800AF9905 /* RightsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		CB7852C129ECAE520096B805 /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		CB7852C329ECB0AD0096B805 /* CreateReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReportView.swift; sourceTree = "<group>"; };
 		CB94158929D8D02000DFB5BE /* PinnedReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedReportView.swift; sourceTree = "<group>"; };
+		CBF3009E29FF413800AF9905 /* RightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +211,7 @@
 				CB7852BF29ECAE4A0096B805 /* Home.swift */,
 				CB7852C129ECAE520096B805 /* CustomTabBar.swift */,
 				CB7852C329ECB0AD0096B805 /* CreateReportView.swift */,
+				CBF3009E29FF413800AF9905 /* RightsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				CB7852C429ECB0AD0096B805 /* CreateReportView.swift in Sources */,
 				1962703529C4290C00911355 /* CopWatchNYCApp.swift in Sources */,
 				1962707729C42B1800911355 /* LocationManager.swift in Sources */,
+				CBF3009F29FF413800AF9905 /* RightsView.swift in Sources */,
 				1962707329C42AE700911355 /* MapView.swift in Sources */,
 				1962704129C4291100911355 /* CopWatchNYC.xcdatamodeld in Sources */,
 				CB51E46129C66FBD00EF43BC /* AccountView.swift in Sources */,
