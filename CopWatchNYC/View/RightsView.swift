@@ -22,7 +22,7 @@ struct RightsView: View {
                 LinkButton(title: "Pulled over by Cops in public", url: URL(string: "https://www.aclu.org/know-your-rights/stopped-by-police#ive-been-pulled-over-by-the-police")!)
                 LinkButton(title: " Cops at your front door", url: URL(string: "https://www.aclu.org/know-your-rights/stopped-by-police#the-police-are-at-my-door")!)
                 LinkButton(title: "Cops attempting for possible arrest", url: URL(string: "https://www.aclu.org/know-your-rights/stopped-by-police#ive-been-arrested-by-the-police")!)
-                LinkButton(title: "Police violated my rights", url: URL(string: "https://www.nyc.gov/site/ccrb/complaints/file-a-complaint/file-online.page")!)
+                LinkButton(title: "Cops violated my rights", url: URL(string: "https://www.nyc.gov/site/ccrb/complaints/file-a-complaint/file-online.page")!)
             }
         }
     }
