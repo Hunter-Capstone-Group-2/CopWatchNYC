@@ -60,6 +60,7 @@ struct Accountview: View {
                         .font(.headline)
                         .foregroundColor(.gray)
                 }
+                
                 .padding(.top, 5)
                 
                 Text("Your Posts:")
@@ -100,6 +101,7 @@ struct Accountview: View {
 
 struct SettingsView: View {
     @State private var isNotificationsEnabled = true
+    @State private var showAuthView = false
     
     var body: some View {
         NavigationView {
@@ -123,7 +125,9 @@ struct SettingsView: View {
                 
                 Spacer()
                 VStack{
-                    NavigationLink(destination: AuthView()) {
+                    Button(action: {
+                        self.showAuthView = true
+                    }) {
                         Text("Login")
                             .font(.headline)
                             .fontWeight(.semibold)
@@ -135,20 +139,20 @@ struct SettingsView: View {
                     }
                     
                     Button(action: {
-                                    do {
-                                        try Auth.auth().signOut()
-                                    } catch let signOutError as NSError {
-                                        print("Error signing out: %@", signOutError)
-                                    }
-                                }) {
-                                    Text("Sign Out")
-                                        .font(.headline)
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(.white)
-                                        .frame(width: 250, height: 50)
-                                        .background(Color.red)
-                                        .cornerRadius(10)
-                                        .padding(.bottom, 20)
+                        do {
+                            try Auth.auth().signOut()
+                        } catch let signOutError as NSError {
+                            print("Error signing out: %@", signOutError)
+                        }
+                    }) {
+                        Text("Sign Out")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
+                            .frame(width: 250, height: 50)
+                            .background(Color.red)
+                            .cornerRadius(10)
+                            .padding(.bottom, 20)
                     }
                 }
             }
@@ -156,9 +160,18 @@ struct SettingsView: View {
             .edgesIgnoringSafeArea(.all)
             .background(Color("Color 2"))
             .navigationBarHidden(true)
+            .fullScreenCover(isPresented: $showAuthView, content: {
+                NavigationView {
+                    AuthView()
+                        .navigationBarTitle("", displayMode: .inline)
+                        .navigationBarHidden(true)
+                        .navigationBarBackButtonHidden(true)
+                }
+            })
         }
     }
 }
+
 
 struct Accountview_Previews: PreviewProvider {
     static var previews: some View {

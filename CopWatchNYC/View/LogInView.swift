@@ -188,7 +188,7 @@ struct LogInView: View {
                                 
                                 if user.isEmailVerified {
                                     errorMessage = ""
-                                    path.append("NavBarView")
+                                    path.append("Home")
                                 } else {
                                     errorMessage = "The email is not verified"
                                 }
