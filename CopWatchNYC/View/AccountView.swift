@@ -6,14 +6,18 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct Accountview: View {
     @State private var profileImage: UIImage?
     @State private var username: String = "@username"
     @State private var likesCount: Int = 100
     @State private var postsCount: Int = 1
+    @State var userEmail: String = "Not Signed In"
+
     
     var body: some View {
+  
         NavigationView {
             VStack {
                 Image(uiImage: profileImage ?? UIImage(systemName: "person.circle.fill")!)
@@ -27,12 +31,20 @@ struct Accountview: View {
                         // Implement image picker logic here to allow the user to upload their profile picture
                     }
                 
-                Text(username)
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .padding(.top, 20)
-                    .foregroundColor(.white)
-                
+                VStack {
+                        Text("\(userEmail)")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding(.top, 20)
+                        .foregroundColor(.white)
+                       }
+                .onAppear {
+                    if let user = Auth.auth().currentUser {
+                        userEmail = user.email ?? "Not Signed In"
+                    } else {
+                        userEmail = "Not Signed In"
+                    }
+                }
                 HStack {
                     Text("Likes:")
                         .font(.headline)
@@ -90,29 +102,61 @@ struct SettingsView: View {
     @State private var isNotificationsEnabled = true
     
     var body: some View {
-        VStack {
-            Text("Settings")
-                .font(.title)
-                .fontWeight(.bold)
-                .foregroundColor(.white)
-                .padding(.top, 80)
-            
-            HStack {
-                Text("Notifications:")
-                    .font(.headline)
+        NavigationView {
+            VStack {
+                Text("Settings")
+                    .font(.title)
+                    .fontWeight(.bold)
                     .foregroundColor(.white)
-                Toggle(isOn: $isNotificationsEnabled){
-                    Text("")
+                    .padding(.top, 80)
+                
+                HStack {
+                    Text("Notifications:")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                    Toggle(isOn: $isNotificationsEnabled){
+                        Text("")
+                    }
+                    .tint(Color.blue)
                 }
-                .tint(Color.blue)
+                .padding(.top, 50)
+                
+                Spacer()
+                VStack{
+                    NavigationLink(destination: AuthView()) {
+                        Text("Login")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
+                            .frame(width: 250, height: 50)
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                            .padding(.bottom, 20)
+                    }
+                    
+                    Button(action: {
+                                    do {
+                                        try Auth.auth().signOut()
+                                    } catch let signOutError as NSError {
+                                        print("Error signing out: %@", signOutError)
+                                    }
+                                }) {
+                                    Text("Sign Out")
+                                        .font(.headline)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.white)
+                                        .frame(width: 250, height: 50)
+                                        .background(Color.red)
+                                        .cornerRadius(10)
+                                        .padding(.bottom, 20)
+                    }
+                }
             }
-            .padding(.top, 50)
-            
-            Spacer()
+            .padding()
+            .edgesIgnoringSafeArea(.all)
+            .background(Color("Color 2"))
+            .navigationBarHidden(true)
         }
-        .padding()
-        .edgesIgnoringSafeArea(.all)
-        .background(Color("Color 2"))
     }
 }
 
