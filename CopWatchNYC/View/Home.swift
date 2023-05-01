@@ -11,6 +11,7 @@ struct Home: View {
 
     @State var selectedTab: String = "home"
     @Binding var reportedLocations: [IdentifiablePin]
+    @StateObject var locationManager = LocationManager()
 
     var body: some View {
 
@@ -26,6 +27,7 @@ struct Home: View {
 
                 CreateReportView(reportedLocations: $reportedLocations, selectedTab: $selectedTab)
                     .tag("report")
+                    .environmentObject(locationManager)
 
                 
             }

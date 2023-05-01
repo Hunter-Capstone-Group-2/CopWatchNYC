@@ -21,6 +21,8 @@ struct LogInView: View {
     @State private var path = NavigationPath()
     @State private var isPasswordVisible = false
     
+    var globalUserID: String = ""
+    
     var body: some View {
         NavigationStack(path: $path) {
             ZStack{
@@ -184,7 +186,7 @@ struct LogInView: View {
                             // if user is authorized change view to mapview
                             if let authResult = authResult {
                                 let user = authResult.user
-                                //print(user.uid)
+                                print(user.uid)
                                 
                                 if user.isEmailVerified {
                                     errorMessage = ""
@@ -243,8 +245,14 @@ struct LogInView: View {
                                     return
                                 }
                                 
+                                
+                                
                                 path.append("Home")
+                                
                                 print("Signed In")
+                                print(user.userID ?? "Not Found")
+                                print("-------------------------")
+                                print(Auth.auth().currentUser?.uid)
                             }
                         }
                         
