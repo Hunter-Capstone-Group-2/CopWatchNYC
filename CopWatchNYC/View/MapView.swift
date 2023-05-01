@@ -71,24 +71,24 @@ struct MapView: View {
                     .padding(.trailing) // Add padding to the trailing side of the VStack
                 }
                 VStack {
-                                    HStack {
-                                        Spacer()
-
-                                        Button(action: {}, label: {
-                                            NavigationLink(destination: RightsView()) {
-                                                Image(systemName: "info.circle.fill")
-                                                    .padding()
-                                                    .foregroundColor(.white)
-                                                    .background(Color.black)
-                                                    .clipShape(Circle())
-                                                    .shadow(radius: 5)
-                                            }
-                                        })
-                                        .padding(.trailing)
-                                    }
-                                    .padding(.top)
-
-                                    Spacer()
+                    HStack {
+                        Spacer()
+                        
+                        Button(action: {}, label: {
+                            NavigationLink(destination: RightsView()) {
+                                Image(systemName: "info.circle.fill")
+                                    .padding()
+                                    .foregroundColor(.white)
+                                    .background(Color.black)
+                                    .clipShape(Circle())
+                                    .shadow(radius: 5)
+                            }
+                        })
+                        .padding(.trailing)
+                    }
+                    .padding(.top)
+                    
+                    Spacer()
                 }
             }
         }
