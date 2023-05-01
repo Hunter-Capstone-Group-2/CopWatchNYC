@@ -5,6 +5,28 @@ import CoreLocation
 struct IdentifiablePin: Identifiable {
     let id = UUID()
     let location: CLLocationCoordinate2D
+    let firstCarouselOption: String
+    let secondCarouselOption: String
+}
+
+struct CustomCalloutView: View {
+    let pin: IdentifiablePin
+
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(pin.firstCarouselOption)
+                .font(.headline)
+                .foregroundColor(.black) // Change the text color to black
+            Text(pin.secondCarouselOption)
+                .font(.subheadline)
+                .foregroundColor(.black) // Change the text color to black
+        }
+        .padding()
+        .frame(width: 250)
+        .background(Color.white)
+        .cornerRadius(8)
+        .shadow(radius: 5)
+    }
 }
 
 struct MapView: View {
@@ -27,10 +49,19 @@ struct MapView: View {
                 Map(coordinateRegion: $viewModel.region, interactionModes: [.all], showsUserLocation: true, annotationItems: reportedLocations) { pin in
                     // Add MapMarker for each reported location with a red tint
                     MapAnnotation(coordinate: pin.location) {
-                        Image("cop_icon")
-                            .resizable()
-                            .frame(width: 45, height: 45)
-                    }
+                                  Button(action: {
+                                      viewModel.selectedPin = pin
+                                      print("Tapped pin: \(pin)")
+                                      print("Current reportedLocations: \(reportedLocations)")
+                                  }) {
+                                      Image("cop_icon")
+                                          .resizable()
+                                          .frame(width: 45, height: 45)
+                                  }
+                                  if viewModel.selectedPin == pin {
+                                      CustomCalloutView(pin: pin)
+                                  }
+                              }
                     
                 }
                 .ignoresSafeArea() // Make the Map ignore the safe area to occupy the full screen
@@ -113,7 +144,7 @@ struct MapView: View {
     
     
     final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
-        
+        @Published var selectedPin: IdentifiablePin?
         // Define a published variable to hold the coordinate region for the Map view
         @Published var region = MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: 40.7128, longitude: -74.0060),
@@ -179,5 +210,11 @@ struct MapView: View {
         static var previews: some View {
             MapView(reportedLocations: $reportedLocations)
         }
+    }
+}
+
+extension IdentifiablePin: Equatable {
+    static func == (lhs: IdentifiablePin, rhs: IdentifiablePin) -> Bool {
+        lhs.id == rhs.id
     }
 }

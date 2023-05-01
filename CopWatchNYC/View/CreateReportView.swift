@@ -16,8 +16,17 @@ struct CreateReportView: View {
     private func storeReportLocation() {
            guard let userLocation = locationManager.location else { return }
            let reportLocation = userLocation.coordinate
-           reportedLocations.append(IdentifiablePin(location: reportLocation))
+           let (firstOptionText, secondOptionText) = selectedOptionText()
+           reportedLocations.append(IdentifiablePin(location: reportLocation, firstCarouselOption: firstOptionText, secondCarouselOption: secondOptionText))
+           print("New report added: \(reportedLocations.last!)") 
        }
+    
+    func selectedOptionText() -> (String, String) {
+        let firstOptionText = selectedIndex == 0 ? "Cops in Subway Station" : (selectedIndex == 1 ? "Cops in Public" : "Cops near Bus Stop")
+        let secondOptionText = secondCarouselIndex == 0 ? "Checking for Fare Evaders" : (secondCarouselIndex == 1 ? "Heavy Presence" : "Add what is happening in the comments of your post!")
+
+        return (firstOptionText, secondOptionText)
+    }
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [Color(.black), Color("Color 1")]), startPoint: .top, endPoint: .bottom)
