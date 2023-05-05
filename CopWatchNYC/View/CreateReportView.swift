@@ -26,11 +26,17 @@ struct CreateReportView: View {
         
         pinningController.latitude = reportLocation.latitude
         pinningController.longitude = reportLocation.longitude
+        pinningController.report = firstOptionText
+        pinningController.report_detail = secondOptionText
+        pinningController.report_location = addressViewModel.address
         
         do {
             try await pinningController.addPin()
         } catch {
             print("Error: \(error)")
+            print(firstOptionText)
+            print(secondOptionText)
+            print(addressViewModel.address)
         }
         
     }

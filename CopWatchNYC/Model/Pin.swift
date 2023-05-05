@@ -12,4 +12,7 @@ struct Pin: Codable {
     var confirmed: Bool
     var longitude: Double
     var latitude: Double
+    var report: String = ""
+    var report_detail = ""
+    var report_location = ""
 }

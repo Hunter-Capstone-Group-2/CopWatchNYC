@@ -148,7 +148,7 @@ struct MapView: View {
                     let longitude = CLLocationDegrees(pins.longitude)
                     let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
                     
-                    let coordinate = IdentifiablePin(location: location, firstCarouselOption: "pin.firstCarouselOption", secondCarouselOption: "pin.secondCarouselOption")
+                    let coordinate = IdentifiablePin(location: location, firstCarouselOption: pins.report, secondCarouselOption: pins.report_detail)
                     
                     print("Coordinates Here: Loop")
                     print(coordinate)
