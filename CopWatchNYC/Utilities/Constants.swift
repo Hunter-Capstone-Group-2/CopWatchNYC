@@ -12,8 +12,8 @@ enum Constants {
     // hostedURL : "http://copwatch.fly.dev"
     // baseURL : "http://127.0.0.1:8080/"
     
-    static let baseURL = "http://127.0.0.1:8080/"
-    //static let baseURL = "http://copwatch.fly.dev/"
+    //static let baseURL = "http://127.0.0.1:8080/"
+    static let baseURL = "http://copwatch.fly.dev/"
 
 
 }

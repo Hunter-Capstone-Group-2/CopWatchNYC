@@ -14,7 +14,7 @@ struct IdentifiablePin: Identifiable {
 
 struct CustomCalloutView: View {
     let pin: IdentifiablePin
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             Text(pin.firstCarouselOption)
@@ -23,6 +23,10 @@ struct CustomCalloutView: View {
             Text(pin.secondCarouselOption)
                 .font(.subheadline)
                 .foregroundColor(.black)
+            NavigationLink(destination: PinnedReportView(pin: pin)) {
+                Text("More Details")
+                    .foregroundColor(.blue)
+            }
         }
         .padding()
         .frame(width: 250)

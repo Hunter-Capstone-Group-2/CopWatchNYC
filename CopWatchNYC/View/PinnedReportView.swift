@@ -8,45 +8,47 @@
 import SwiftUI
 
 struct PinnedReportView: View {
+    let pin: IdentifiablePin
     @State private var comment: String = ""
     @State private var views: Int = 100
     
-    var reportTitle: String
-    var location: String
-    var time: String
-    var description: String
+//    var reportTitle: String
+//    var location: String
+//    var time: String
+//    var description: String
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text(reportTitle)
+            Text(pin.firstCarouselOption)
                 .font(.custom("HelveticaNeue-Bold", size: 26))
-                   .foregroundColor(.white)
-            
-            Text(description)
+                .foregroundColor(.white)
+
+            Text(pin.secondCarouselOption)
                 .font(.subheadline)
                 .fontWeight(.light)
                 .foregroundColor(.white)
+
+//            HStack(alignment: .center) {
+//                Image(systemName: "location.fill")
+//                    .foregroundColor(.white)
+//
+//                Text((pin.location){
+//                    .font(.caption)
+//                    .fontWeight(.bold)
+//                    .foregroundColor(.white)
+//            }
+
             
-            HStack(alignment: .center) {
-                Image(systemName: "location.fill")
-                    .foregroundColor(.white)
-                
-                Text("Location: \(location)")
-                    .font(.caption)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-            }
-            
-            HStack(alignment: .center) {
-                Image(systemName: "clock.fill")
-                    .foregroundColor(.white)
-                
-                Text("Time: \(time)")
-                    .font(.caption)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-            }
-            
+//            HStack(alignment: .center) {
+//                Image(systemName: "clock.fill")
+//                    .foregroundColor(.white)
+//                
+//                Text("Time: \(time)")
+//                    .font(.caption)
+//                    .fontWeight(.bold)
+//                    .foregroundColor(.white)
+//            }
+//            
             HStack(alignment: .center) {
                 Image(systemName: "eye.fill")
                     .foregroundColor(.white)
@@ -143,11 +145,11 @@ struct CommentView: View {
     }
 }
 
-struct PinnedReportView_Previews: PreviewProvider {
-    static var previews: some View {
-        PinnedReportView(reportTitle: "Cop in Subway Station",
-                         location: "695 Park Ave, New York, NY 10065",
-                         time: "6:30 PM",
-                         description: "There are three police officers standing by the turnstiles")
-    }
-}
+//struct PinnedReportView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PinnedReportView(reportTitle: "Cop in Subway Station",
+//                         location: "695 Park Ave, New York, NY 10065",
+//                         time: "6:30 PM",
+//                         description: "There are three police officers standing by the turnstiles")
+//    }
+//}
