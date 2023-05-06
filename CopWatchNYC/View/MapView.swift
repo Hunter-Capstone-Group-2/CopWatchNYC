@@ -39,6 +39,19 @@ struct MapView: View {
     @StateObject var pinningController = AddPinController()
     @StateObject private var viewModel = ContentViewModel()
     
+    func updateReportedLocations() {
+        reportedLocations.removeAll()
+        for pin in pinningController.pins {
+            let location = CLLocationCoordinate2D(latitude: pin.latitude, longitude: pin.longitude)
+            let firstCarouselOption = pin.report
+            let secondCarouselOption = pin.report_detail
+
+            let identifiablePin = IdentifiablePin(location: location, firstCarouselOption: firstCarouselOption, secondCarouselOption: secondCarouselOption)
+            reportedLocations.append(identifiablePin)
+        }
+    }
+
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -84,6 +97,24 @@ struct MapView: View {
                         })
                         .padding(.leading)
                         Spacer()
+                        Button(action: {
+                            Task {
+                                do {
+                                    try await pinningController.fetchPins()
+                                    updateReportedLocations()
+                                } catch {
+                                    print("Error: \(error)")
+                                }
+                            }
+                        }, label: {
+                            Image(systemName: "arrow.clockwise")
+                                .padding()
+                                .foregroundColor(.white)
+                                .background(Color.black)
+                                .clipShape(Circle())
+                                .shadow(radius: 5)
+                        })
+                        .padding(.trailing)
                         
                         Button(action: {
                             print("-------------------")
@@ -128,41 +159,39 @@ struct MapView: View {
         .onAppear {
             viewModel.checkIfLocationServiceIsEnabled()
             MKMapView.appearance().pointOfInterestFilter = .excludingAll
-            
+
             Task {
-     
                 do {
                     try await pinningController.fetchPins()
-                    
                 } catch {
                     print("Error: \(error)")
                 }
-                
-                for pins in pinningController.pins {
-                    
+
+                for pin in pinningController.pins {
                     print("Coordinates Here: API")
-                    print(pins)
+                    print(pin)
                     print("--------------------")
-                    
-                    let latitude = CLLocationDegrees(pins.latitude)
-                    let longitude = CLLocationDegrees(pins.longitude)
+
+                    let latitude = CLLocationDegrees(pin.latitude)
+                    let longitude = CLLocationDegrees(pin.longitude)
                     let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                    
-                    let coordinate = IdentifiablePin(location: location, firstCarouselOption: pins.report, secondCarouselOption: pins.report_detail)
-                    
+
+                    let coordinate = IdentifiablePin(location: location, firstCarouselOption: pin.report, secondCarouselOption: pin.report_detail)
+
                     print("Coordinates Here: Loop")
                     print(coordinate)
                     print("--------------------")
-                    
+
                     reportedLocations.append(coordinate)
                 }
-                
+
                 print("Coordinates Here: Array")
                 print(reportedLocations)
                 print("--------------------")
-                
+
             }
         }
+
     }
         
         final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
