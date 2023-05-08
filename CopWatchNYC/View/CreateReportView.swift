@@ -1,6 +1,14 @@
+//
+//  CreateReportView.swift
+//  CopWatchNYC
+//
+//  Created by Steve Roy on 4/18/23.
+//
+
 import SwiftUI
 import FirebaseAuth
 
+// The View for Creating Reports
 struct CreateReportView: View {
     @State private var selectedIndex: Int = 0
     @State private var secondCarouselIndex: Int = 0
@@ -8,11 +16,12 @@ struct CreateReportView: View {
     @StateObject private var pinningController = AddPinController()
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var locationManager: LocationManager
-    @Binding var reportedLocations: [IdentifiablePin] // Add this line
+    @Binding var reportedLocations: [IdentifiablePin]
     @Binding var selectedTab: String
     
     let globalUserID = Auth.auth().currentUser?.uid
     
+    // Arrays of the images for the two carousel views
     let firstCarouselImages = ["subway", "public", "bus"]
     let secondCarouselImages = ["fare", "heavy", "other"]
     
@@ -41,6 +50,7 @@ struct CreateReportView: View {
         
     }
     
+    // Function for changing the text based on selection
     func selectedOptionText() -> (String, String) {
         let firstOptionText = selectedIndex == 0 ? "Cops in Subway Station" : (selectedIndex == 1 ? "Cops in Public" : "Cops near Bus Stop")
         let secondOptionText = secondCarouselIndex == 0 ? "Checking for Fare Evaders" : (secondCarouselIndex == 1 ? "Heavy Presence" : "Add what is happening in the comments of your post!")
@@ -49,11 +59,13 @@ struct CreateReportView: View {
     }
     
     var body: some View {
+        // Changing the gradient background color with a ZStack
         ZStack {
             LinearGradient(gradient: Gradient(colors: [Color(.black), Color("Color 1")]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
+                // Text that shows the questions for the carousel views
                 Text("What Would You Like to Report?")
                     .font(.title)
                     .fontWeight(.bold)
@@ -61,24 +73,30 @@ struct CreateReportView: View {
                     .lineLimit(1)
                     .foregroundColor(.white)
                 
+                // Text showing the selected option for the first carousel view
                 Text(selectedIndex == 0 ? "Cops in Subway Station" : (selectedIndex == 1 ? "Cops in Public" : "Cops near Bus Stop"))
                     .font(.headline)
                     .foregroundColor(.white)
                 
+                // First carousel for selecting which report
                 CarouselView(selectedIndex: $selectedIndex, images: firstCarouselImages)
                 
+                // Text for report details and the second carousel
                 Text("What's Happening?")
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
                 
+                // Text showing the options for the second carousel
                 Text(secondCarouselIndex == 0 ? "Checking for Fare Evaders" : (secondCarouselIndex == 1 ? "Heavy Presence" : "Add what is happening in the comments of your post!"))
                     .font(.headline)
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                 
+                // Second carousel for selecting details of the report
                 CarouselView(selectedIndex: $secondCarouselIndex, images: secondCarouselImages)
                 
+                // The text field to enter the general description of the area
                 Text("State a general description of the area.")
                     .font(.title)
                     .fontWeight(.bold)
@@ -92,6 +110,7 @@ struct CreateReportView: View {
                     .padding()
                     .foregroundColor(.black)
                 
+                // The button to post the report
                 PostButtonView(action: {
                     await storeReportLocation()
                     presentationMode.wrappedValue.dismiss()
@@ -103,10 +122,12 @@ struct CreateReportView: View {
 }
 
 struct CarouselView: View {
+    // The binding variable for the selected index and array of images for the carousels
     @Binding var selectedIndex: Int
     let images: [String]
     
     var body: some View {
+        // Tabview with a foreach loop over the images array
         TabView(selection: $selectedIndex) {
             ForEach(0..<images.count, id: \.self) { index in
                 Image(images[index])
@@ -137,6 +158,7 @@ struct PostButtonView: View {
                 selectedTab = "home"
         }
         }) {
+            // Frontend of Post button
             Text("Post Your Report!")
                 .font(.headline)
                 .fontWeight(.bold)
@@ -148,7 +170,7 @@ struct PostButtonView: View {
     }
 }
 
-
+// Live Preview for the Create Report View
 struct CreateReportView_Previews: PreviewProvider {
     @State static private var previewReportedLocations: [IdentifiablePin] = []
     @State static private var selectedTab = "report"

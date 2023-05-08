@@ -20,6 +20,7 @@ struct Accountview: View {
   
         NavigationView {
             VStack {
+                // Displaying Profile Picture
                 Image(uiImage: profileImage ?? UIImage(systemName: "person.circle.fill")!)
                     .resizable()
                     .frame(width: 150, height: 150)
@@ -46,6 +47,7 @@ struct Accountview: View {
                     }
                 }
                 HStack {
+                    // Displaying amount of Likes and Posts
                     Text("Likes:")
                         .font(.headline)
                         .foregroundColor(.white)
@@ -68,6 +70,7 @@ struct Accountview: View {
                     .padding(.top, 20)
                     .foregroundColor(.white)
                 
+                // Displaying a list of old posts user created
                 List {
                     Section {
                         if postsCount == 0 {
