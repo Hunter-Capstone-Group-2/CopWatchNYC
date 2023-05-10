@@ -18,8 +18,43 @@ struct SignUpView: View {
     @State private var showAlert = false
     @State private var isPasswordVisible = false
     
+    @StateObject private var userController = UserController()
+    
     var passwordsMatch: Bool {
         return password == confirmPassword
+    }
+    
+    func generateUsername(email: String) -> String {
+        
+        guard !email.isEmpty else {
+            return "CopWatchNYCDefaultUserName"
+        }
+        
+        var username = ""
+        let emailCharacters = email.filter { $0 != "@" && $0 != "." }
+        let maxIndex = emailCharacters.count - 1
+        
+        for _ in 0..<8 {
+            let randomIndex = Int.random(in: 0...maxIndex)
+            
+            username += String(emailCharacters[emailCharacters.index(emailCharacters.startIndex, offsetBy: randomIndex)])
+        }
+        
+        return username
+        
+    }
+    
+    private func createUser() async {
+        userController.userID = Auth.auth().currentUser?.uid ?? "User Not Found"
+        userController.user_name = generateUsername(email: email)
+        
+        do {
+            try await userController.addUser()
+            print("User added!: \(userController.users.last!)")
+        } catch {
+            print("Error: \(error)")
+        }
+        
     }
     
     var body: some View {
@@ -171,6 +206,11 @@ struct SignUpView: View {
                                         errorMessage = "This email is already in use!"
                                         
                                     } else {
+                                        
+                                        //create User in db with firebase UID
+                                        
+                                        
+                                        
                                         return
                                     }
                                 }
@@ -232,6 +272,9 @@ struct SignUpView: View {
                             
                             Auth.auth().signIn(with: credential) { result, error in
                                 guard error == nil else {
+                                    
+                                    //create User in db with firebase UID
+                                    
                                     return
                                 }
                                 

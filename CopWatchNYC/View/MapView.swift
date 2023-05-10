@@ -40,7 +40,7 @@ struct MapView: View {
     @Binding var reportedLocations: [IdentifiablePin]
     
     @StateObject var locationManager = LocationManager()
-    @StateObject var pinningController = AddPinController()
+    @StateObject var pinningController = PinningController()
     @StateObject private var viewModel = ContentViewModel()
     
     func updateReportedLocations() {
@@ -119,17 +119,7 @@ struct MapView: View {
                                 .shadow(radius: 5)
                         })
                         .padding(.trailing)
-                        
-                        Button(action: {
-                            print("-------------------")
-                        }, label: {
-                            Image(systemName: "cross.circle.fill")
-                                .padding()
-                                .foregroundColor(.white)
-                                .background(Color.black)
-                                .clipShape(Circle())
-                                .shadow(radius: 5)
-                        })
+
                         
                     }
                     .padding(.top)
@@ -149,7 +139,7 @@ struct MapView: View {
                                     .shadow(radius: 5)
                             }
                         })
-                        .padding(.trailing)
+                        .padding(.trailing, 35)
                     }
                     .padding(.top)
                     

@@ -13,7 +13,7 @@ struct CreateReportView: View {
     @State private var selectedIndex: Int = 0
     @State private var secondCarouselIndex: Int = 0
     @StateObject private var addressViewModel = AddressViewModel()
-    @StateObject private var pinningController = AddPinController()
+    @StateObject private var pinningController = PinningController()
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var locationManager: LocationManager
     @Binding var reportedLocations: [IdentifiablePin]
@@ -38,14 +38,13 @@ struct CreateReportView: View {
         pinningController.report = firstOptionText
         pinningController.report_detail = secondOptionText
         pinningController.report_location = addressViewModel.address
+        //pinningController.userID = globalUserID ?? "User Not Logged In"
+        pinningController.userID = Constants.testUserIDHosted
         
         do {
             try await pinningController.addPin()
         } catch {
             print("Error: \(error)")
-            print(firstOptionText)
-            print(secondOptionText)
-            print(addressViewModel.address)
         }
         
     }

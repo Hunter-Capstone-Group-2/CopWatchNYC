@@ -7,21 +7,6 @@
 
 import Foundation
 
-enum HttpMethod: String {
-    case POST, GET, PUT, DELETE
-}
-
-enum MIMEType: String {
-    case JSON = "application/json"
-}
-enum HttpHeaders: String {
-    case contentType = "Content-Type"
-}
-
-enum HttpError: Error {
-    case badURL, badResponse, errorDecodingData, invalidURL
-}
-
 class HttpClient {
     private init() { }
     
