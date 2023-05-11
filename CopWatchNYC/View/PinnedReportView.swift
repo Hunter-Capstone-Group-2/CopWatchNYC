@@ -7,15 +7,12 @@
 
 import SwiftUI
 
+
 struct PinnedReportView: View {
     let pin: IdentifiablePin
     @State private var comment: String = ""
     @State private var views: Int = 100
     
-//    var reportTitle: String
-//    var location: String
-//    var time: String
-//    var description: String
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -27,28 +24,7 @@ struct PinnedReportView: View {
                 .font(.subheadline)
                 .fontWeight(.light)
                 .foregroundColor(.white)
-
-//            HStack(alignment: .center) {
-//                Image(systemName: "location.fill")
-//                    .foregroundColor(.white)
-//
-//                Text((pin.location){
-//                    .font(.caption)
-//                    .fontWeight(.bold)
-//                    .foregroundColor(.white)
-//            }
-
-            
-//            HStack(alignment: .center) {
-//                Image(systemName: "clock.fill")
-//                    .foregroundColor(.white)
-//                
-//                Text("Time: \(time)")
-//                    .font(.caption)
-//                    .fontWeight(.bold)
-//                    .foregroundColor(.white)
-//            }
-//            
+      
             HStack(alignment: .center) {
                 Image(systemName: "eye.fill")
                     .foregroundColor(.white)
@@ -67,32 +43,12 @@ struct PinnedReportView: View {
                 .foregroundColor(.white)
             
             ScrollView {
-                VStack(alignment: .leading, spacing: 16) {
-                    ForEach(0..<10) { _ in
                         CommentView()
                     }
-                }
-            }
-            
+    
             Divider()
                 .foregroundColor(.white)
             
-            HStack {
-                TextField("Add a comment...", text: $comment)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.horizontal, 8)
-                
-                Button(action: {}) {
-                    Text("Post")
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 16)
-                }
-                .disabled(comment.isEmpty)
-                .background(comment.isEmpty ? Color.gray : Color.blue)
-                .cornerRadius(5)
-                .padding(.trailing, 8)
-            }
-            .padding(.bottom, 16)
         }
         .padding()
         .background(Color("Color"))
@@ -100,56 +56,41 @@ struct PinnedReportView: View {
 }
 
 struct CommentView: View {
-    @State private var likes: Int = 0
-    @State private var dislikes: Int = 0
+    @State private var commentText = ""
+    let commentController = CommentController()
+    let pinID = UUID(uuidString: "A8B12EE7-E637-4562-AFDA-A1FBC08CCA7D") ?? UUID()
+    let userID = "SQWYDxE9TVeB7s67bx52Kg=="
+
+        
     
     var body: some View {
-        HStack(alignment: .top, spacing: 8) {
-            Image(systemName: "person.circle.fill")
-                .resizable()
-                .frame(width: 32, height: 32)
-                .foregroundColor(.white)
+        VStack {
+            TextField("Enter your comment", text: $commentText)
+                .padding()
+                .background(Color.gray.opacity(0.2))
+                .cornerRadius(8)
+                .padding(.horizontal)
             
-            VStack(alignment: .leading, spacing: 8) {
-                Text("Username")
+            Button(action: {
+                commentController.postComment(commentText: commentText, userID: userID, pinID: pinID) { success in
+                    if success {
+                        print("Comment posted successfully!")
+                        // Perform any necessary actions after successful comment posting
+                    } else {
+                        print("Failed to post comment.")
+                        // Handle error or display an error message
+                    }
+                }
+            }) {
+                Text("Post Comment")
                     .font(.headline)
                     .foregroundColor(.white)
-                
-                Text("This is a comment for testing purposes.")
-                    .font(.body)
-                    .foregroundColor(.white)
-                
-                HStack {
-                    Button(action: {
-                        likes += 1
-                    }) {
-                        Image(systemName: "hand.thumbsup.fill")
-                        
-                        Text("\(likes)")
-                    }
-                    .foregroundColor(.blue)
-                    
-                    Button(action: {
-                        dislikes += 1
-                    }) {
-                        Image(systemName: "hand.thumbsdown.fill")
-                        
-                        Text("\(dislikes)")
-                    }
-                    .foregroundColor(.blue)
-                }
-                .font(.caption)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.blue)
+                    .cornerRadius(8)
+                    .padding(.horizontal)
             }
         }
-        .padding(.vertical, 8)
     }
 }
-
-//struct PinnedReportView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PinnedReportView(reportTitle: "Cop in Subway Station",
-//                         location: "695 Park Ave, New York, NY 10065",
-//                         time: "6:30 PM",
-//                         description: "There are three police officers standing by the turnstiles")
-//    }
-//}
