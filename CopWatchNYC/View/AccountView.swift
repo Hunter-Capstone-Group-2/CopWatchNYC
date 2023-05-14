@@ -1,3 +1,10 @@
+//
+//  AccountView.swift
+//  CopWatchNYC
+//
+//  Created by Steve Roy on 2/24/23.
+//
+
 import SwiftUI
 
 struct AccountView: View {
