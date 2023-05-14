@@ -21,7 +21,7 @@ struct Home: View {
                 MapView(reportedLocations: $reportedLocations)
                     .tag("home")
 
-                Accountview()
+                AccountView()
                     .tag("user")
 
                 CreateReportView(reportedLocations: $reportedLocations, selectedTab: $selectedTab)

@@ -1,183 +1,93 @@
-//
-//  AccountView.swift
-//  CopWatchNYC
-//
-//  Created by Steve Roy on 2/18/23.
-//
-
 import SwiftUI
-import Firebase
 
-struct Accountview: View {
-    @State private var profileImage: UIImage?
-    @State private var username: String = "@username"
-    @State private var likesCount: Int = 100
-    @State private var postsCount: Int = 1
-    @State var userEmail: String = "Not Signed In"
-
+struct AccountView: View {
+    @State private var postsCount: Int = 0
+    @State private var likesCount: Int = 0
     
     var body: some View {
-  
         NavigationView {
-            VStack {
-                // Displaying Profile Picture
-                Image(uiImage: profileImage ?? UIImage(systemName: "person.circle.fill")!)
+            VStack { // main logo set on top of screen
+                Image("Main Logo")
                     .resizable()
-                    .frame(width: 150, height: 150)
-                    .clipShape(Circle())
-                    .overlay(Circle().stroke(Color.white, lineWidth: 4))
-                    .shadow(radius: 7)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 150)
                     .padding(.top, 50)
-                    .onTapGesture {
-                        // Implement image picker logic here to allow the user to upload their profile picture
-                    }
                 
-                VStack {
-                        Text("\(userEmail)")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .padding(.top, 20)
-                        .foregroundColor(.white)
-                       }
-                .onAppear {
-                    if let user = Auth.auth().currentUser {
-                        userEmail = user.email ?? "Not Signed In"
-                    } else {
-                        userEmail = "Not Signed In"
-                    }
-                }
-                HStack {
-                    // Displaying amount of Likes and Posts
-                    Text("Likes:")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                    Text("\(likesCount)")
-                        .font(.headline)
-                        .foregroundColor(.gray)
-                    
-                    Text("Posts:")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                    Text("\(postsCount)")
-                        .font(.headline)
-                        .foregroundColor(.gray)
-                }
-                
-                .padding(.top, 5)
-                
-                Text("Your Posts:")
-                    .font(.headline)
+                //add the auth for the username
+                Text("Username/Email")
+                    .font(.title)
+                    .fontWeight(.bold)
                     .padding(.top, 20)
                     .foregroundColor(.white)
                 
-                // Displaying a list of old posts user created
-                List {
-                    Section {
-                        if postsCount == 0 {
-                            Text("You haven't made any posts yet.")
-                        } else {
-                            ForEach(0..<postsCount, id: \.self) { index in
-                                Text("Post \(index + 1)")
-                            }
-                        }
-                    }
-                }
-                .scrollContentBackground(.hidden)
-                .background(Color("Color 1"))
-                Spacer()
-            }
-            .background(Color("Color 1"))
-            .navigationBarTitle(Text("My Account"))
-            .navigationBarItems(
-                leading: Spacer(),
-                trailing: ZStack {
-                    NavigationLink(destination: SettingsView()) {
-                        Image(systemName: "gear")
-                            .imageScale(.large)
-                            .foregroundColor(.white)
-                    }
-                }
-            )
-        }
-    }
-}
-
-struct SettingsView: View {
-    @State private var isNotificationsEnabled = true
-    @State private var showAuthView = false
-    
-    var body: some View {
-        NavigationView {
-            VStack {
-                Text("Settings")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .padding(.top, 80)
-                
-                HStack {
-                    Text("Notifications:")
+                VStack(alignment: .center) { // text asking for amount of posts
+                    Text("How many Posts do you have?")
                         .font(.headline)
                         .foregroundColor(.white)
-                    Toggle(isOn: $isNotificationsEnabled){
-                        Text("")
-                    }
-                    .tint(Color.blue)
+                    Text("\(postsCount)") // text for the amount of posts
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
                 }
-                .padding(.top, 50)
+                .padding(.top, 20)
+                .frame(maxWidth: .infinity, alignment: .center)
+                
+                VStack(alignment: .center) { // text of question asking amount of likes
+                    Text("How many Likes do you have?")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                    Text("\(likesCount)") // text showing amount of likes
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                }
+                .padding(.top, 20)
+                .frame(maxWidth: .infinity, alignment: .center)
                 
                 Spacer()
-                VStack{
+                
+                VStack {
                     Button(action: {
-                        self.showAuthView = true
+                        // add the auth for login
                     }) {
-                        Text("Login")
+                        Text("Log In")
                             .font(.headline)
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
                             .frame(width: 250, height: 50)
-                            .background(Color.blue)
+                            .background(Color("Color"))
                             .cornerRadius(10)
                             .padding(.bottom, 20)
                     }
                     
                     Button(action: {
-                        do {
-                            try Auth.auth().signOut()
-                        } catch let signOutError as NSError {
-                            print("Error signing out: %@", signOutError)
-                        }
+                        // add the auth for sign up
                     }) {
-                        Text("Sign Out")
+                        Text("Sign Up")
                             .font(.headline)
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
                             .frame(width: 250, height: 50)
-                            .background(Color.red)
+                            .background(Color("Color"))
                             .cornerRadius(10)
-                            .padding(.bottom, 20)
+                            .padding(.bottom, 10)
                     }
                 }
             }
             .padding()
-            .edgesIgnoringSafeArea(.all)
-            .background(Color("Color 2"))
-            .navigationBarHidden(true)
-            .fullScreenCover(isPresented: $showAuthView, content: {
-                NavigationView {
-                    AuthView()
-                        .navigationBarTitle("", displayMode: .inline)
-                        .navigationBarHidden(true)
-                        .navigationBarBackButtonHidden(true)
-                }
-            })
+            .background( // setting background color with gradient
+                LinearGradient(
+                    gradient: Gradient(colors: [.black, Color("Color 1")]),
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+            )
         }
     }
 }
-
-
-struct Accountview_Previews: PreviewProvider {
+// Live preview for AccountView screen
+struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
-        Accountview()
+        AccountView()
     }
 }

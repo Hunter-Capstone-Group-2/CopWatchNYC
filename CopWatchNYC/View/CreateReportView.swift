@@ -104,7 +104,7 @@ struct CreateReportView: View {
                     .foregroundColor(.white)
                     .padding(.top, 20)
                 
-                TextField("123 Street, New York, NY, 12345", text: $addressViewModel.address)
+                TextField("Ex: Corner of 23rd st; In subway station; etc..", text: $addressViewModel.address)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                     .foregroundColor(.black)
