@@ -6,32 +6,50 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseAuth
+import Combine
 
 struct AccountView: View {
     @State private var postsCount: Int = 0
     @State private var likesCount: Int = 0
+    @State var userEmail: String = ""
+    @State private var showAuthView = false
+    @State private var userSignedIn = false
+    @State private var currentViewShowing: String = "login"
+    @State private var reportedLocations: [IdentifiablePin] = []
+    @State private var isLoggedIn = false
+
+
+
     
     var body: some View {
         NavigationView {
-            VStack { // main logo set on top of screen
+            VStack {
                 Image("Main Logo")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 150)
                     .padding(.top, 50)
                 
-                //add the auth for the username
-                Text("Username/Email")
+                    .onAppear {
+                        // Update authentication status when the AccountView appears
+                        if let user = Auth.auth().currentUser {
+                            userEmail = user.email ?? "Not Signed In"
+                        }
+                    }
+                Text("\(userEmail)")
                     .font(.title)
                     .fontWeight(.bold)
                     .padding(.top, 20)
                     .foregroundColor(.white)
                 
-                VStack(alignment: .center) { // text asking for amount of posts
+                
+                VStack(alignment: .center) {
                     Text("How many Posts do you have?")
                         .font(.headline)
                         .foregroundColor(.white)
-                    Text("\(postsCount)") // text for the amount of posts
+                    Text("\(postsCount)")
                         .font(.title)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
@@ -39,11 +57,11 @@ struct AccountView: View {
                 .padding(.top, 20)
                 .frame(maxWidth: .infinity, alignment: .center)
                 
-                VStack(alignment: .center) { // text of question asking amount of likes
+                VStack(alignment: .center) {
                     Text("How many Likes do you have?")
                         .font(.headline)
                         .foregroundColor(.white)
-                    Text("\(likesCount)") // text showing amount of likes
+                    Text("\(likesCount)")
                         .font(.title)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
@@ -55,7 +73,7 @@ struct AccountView: View {
                 
                 VStack {
                     Button(action: {
-                        // add the auth for login
+                        showAuthView = true
                     }) {
                         Text("Log In")
                             .font(.headline)
@@ -68,9 +86,14 @@ struct AccountView: View {
                     }
                     
                     Button(action: {
-                        // add the auth for sign up
+                        do {
+                            try Auth.auth().signOut()
+                            isLoggedIn = false
+                        } catch let signOutError as NSError {
+                            print("Error signing out: %@", signOutError)
+                        }
                     }) {
-                        Text("Sign Up")
+                        Text("Sign out")
                             .font(.headline)
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
@@ -82,16 +105,44 @@ struct AccountView: View {
                 }
             }
             .padding()
-            .background( // setting background color with gradient
+            .background(
                 LinearGradient(
                     gradient: Gradient(colors: [.black, Color("Color 1")]),
                     startPoint: .top,
                     endPoint: .bottom
                 )
             )
+            
+            .navigationBarTitle("Account")
+            .sheet(isPresented: $showAuthView) {
+                LogInView(currentShowingView: $currentViewShowing, reportedLocations: $reportedLocations, isLoggedIn: $isLoggedIn)
+                    .onReceive(Just(isLoggedIn)) { newValue in
+                        if newValue {
+                            print("User signed in!")
+                            showAuthView = false
+                        }
+                        else {
+                            showAuthView = true
+                        }
+                    }
+            }
+        }
+
+
+            .onAppear {
+                // Update authentication status when the AccountView appears
+                if let user = Auth.auth().currentUser {
+                    userEmail = user.email ?? "Not Signed In"
+                } else {
+                    userEmail = "Not Signed In"
+
+                }
+            }
         }
     }
-}
+
+
+
 // Live preview for AccountView screen
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {

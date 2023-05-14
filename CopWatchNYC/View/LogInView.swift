@@ -14,12 +14,13 @@ import Firebase
 struct LogInView: View {
     @Binding var currentShowingView: String
     @Binding var reportedLocations: [IdentifiablePin]
-    
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var errorMessage = ""
     @State private var path = NavigationPath()
     @State private var isPasswordVisible = false
+    @Binding var isLoggedIn: Bool
+
     
     var body: some View {
         NavigationStack(path: $path) {
@@ -184,11 +185,14 @@ struct LogInView: View {
                             // if user is authorized change view to mapview
                             if let authResult = authResult {
                                 let user = authResult.user
-                                //print(user.uid)
+                                isLoggedIn = true
+                                
+                                
                                 
                                 if user.isEmailVerified {
                                     errorMessage = ""
-                                    path.append("Home")
+                                    isLoggedIn = true
+                               
                                 } else {
                                     errorMessage = "The email is not verified"
                                 }
@@ -241,10 +245,10 @@ struct LogInView: View {
                             Auth.auth().signIn(with: credential) { result, error in
                                 guard error == nil else {
                                     return
+                     
                                 }
-                                
-                                path.append("Home")
-                                print("Signed In")
+                                isLoggedIn = true
+                         
                             }
                         }
                         
