@@ -12,12 +12,14 @@ import FirebaseAuth
 struct CreateReportView: View {
     @State private var selectedIndex: Int = 0
     @State private var secondCarouselIndex: Int = 0
+    @State private var isShowingLoginAlert = false
     @StateObject private var addressViewModel = AddressViewModel()
     @StateObject private var pinningController = PinningController()
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var locationManager: LocationManager
     @Binding var reportedLocations: [IdentifiablePin]
     @Binding var selectedTab: String
+    
     
     let globalUserID = Auth.auth().currentUser?.uid
     
@@ -111,10 +113,21 @@ struct CreateReportView: View {
                 
                 // The button to post the report
                 PostButtonView(action: {
-                    await storeReportLocation()
-                    presentationMode.wrappedValue.dismiss()
+                    if let _ = Auth.auth().currentUser {
+                        // User is logged in, store the report
+                        Task {
+                            await storeReportLocation()
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                    } else {
+                        // User is not logged in, show the login alert
+                        isShowingLoginAlert = true
+                    }
                 }, selectedTab: $selectedTab)
                 .padding(.top, 20)
+            }
+            .alert(isPresented: $isShowingLoginAlert) {
+                Alert(title: Text("Not Logged In"), message: Text("Please Log in to Post a Report. Log in or Sign Up in the Account Page"), dismissButton: .default(Text("OK")))
             }
         }
     }
