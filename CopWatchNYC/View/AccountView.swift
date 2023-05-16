@@ -120,6 +120,10 @@ struct AccountView: View {
                         if newValue {
                             print("User signed in!")
                             showAuthView = false
+                            if let user = Auth.auth().currentUser {
+                                userEmail = user.email ?? "Not Signed In"
+                            }
+                            
                         }
                         else {
                             showAuthView = true
