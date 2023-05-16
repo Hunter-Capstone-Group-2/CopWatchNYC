@@ -17,6 +17,7 @@ struct SignUpView: View {
     @State private var showError = false
     @State private var showAlert = false
     @State private var isPasswordVisible = false
+    @Binding var isSignedUp: Bool
     
     @StateObject private var userController = UserController()
     
@@ -170,6 +171,7 @@ struct SignUpView: View {
                         Button(action: {
                             withAnimation {
                                 self.currentShowingView = "login"
+                                isSignedUp = true
                             }
                         }) {
                             Text("Already have an account? ")
@@ -198,6 +200,7 @@ struct SignUpView: View {
                     
                     Button {
                         if password == confirmPassword {
+                            isSignedUp = true
                             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                                 if let error = error {
                                     print(error.localizedDescription)
@@ -216,6 +219,7 @@ struct SignUpView: View {
                                 }
                                 
                                 if let user = authResult?.user {
+                                    isSignedUp = true
                                     //print(user.uid)
                                     user.sendEmailVerification()
                                     //print("email verifcation sent")
@@ -246,6 +250,7 @@ struct SignUpView: View {
                             .padding(.horizontal )
                     }
                     Button(action: {
+                        isSignedUp = true
                         
                         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
                         
@@ -278,7 +283,7 @@ struct SignUpView: View {
                                     return
                                 }
                                 
-                                path.append("NavBarView")
+                                isSignedUp = true
                                 print("Signed In")
                                 
                             }

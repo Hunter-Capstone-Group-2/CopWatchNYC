@@ -12,7 +12,6 @@ import FirebaseAuth
 struct CreateReportView: View {
     @State private var selectedIndex: Int = 0
     @State private var secondCarouselIndex: Int = 0
-    @State private var isShowingLoginAlert = false
     @StateObject private var addressViewModel = AddressViewModel()
     @StateObject private var pinningController = PinningController()
     @Environment(\.presentationMode) var presentationMode
@@ -121,16 +120,14 @@ struct CreateReportView: View {
                         }
                     } else {
                         // User is not logged in, show the login alert
-                        isShowingLoginAlert = true
+
                     }
                 }, selectedTab: $selectedTab)
                 .padding(.top, 20)
             }
-            .alert(isPresented: $isShowingLoginAlert) {
-                Alert(title: Text("Not Logged In"), message: Text("Please Log in to Post a Report. Log in or Sign Up in the Account Page"), dismissButton: .default(Text("OK")))
             }
         }
-    }
+    
 }
 
 struct CarouselView: View {

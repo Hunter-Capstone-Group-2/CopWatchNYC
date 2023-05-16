@@ -10,6 +10,7 @@ import FirebaseAuth
 import GoogleSignIn
 import FirebaseCore
 import Firebase
+import Combine
 
 struct LogInView: View {
     @Binding var currentShowingView: String
@@ -20,6 +21,12 @@ struct LogInView: View {
     @State private var path = NavigationPath()
     @State private var isPasswordVisible = false
     @Binding var isLoggedIn: Bool
+    @State private var currentViewShowing: String = "login"
+    @State private var showSignUpView = false
+    @State private var isSignedUp = false
+    @State private var isShowingPasswordResetAlert = false
+ 
+      
 
     
     var body: some View {
@@ -117,9 +124,8 @@ struct LogInView: View {
                     
                     Button("Forgot Password?") {
                         if email.isEmpty {
-                            let alert = UIAlertController(title: "Email Required", message: "Please enter your email address to reset your password.", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default))
-                            UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
+                            isShowingPasswordResetAlert = true
+                            
                         } else {
                             Auth.auth().sendPasswordReset(withEmail: email) { error in
                                 if let error = error {
@@ -134,6 +140,22 @@ struct LogInView: View {
                             }
                         }
                     }
+                    .alert(isPresented: $isShowingPasswordResetAlert) {
+                        if email.isEmpty {
+                            return Alert(
+                                title: Text("Email Required"),
+                                message: Text("Please enter your email address to reset your password."),
+                                dismissButton: .default(Text("OK"))
+                            )
+                        } else {
+                            return Alert(
+                                title: Text("Email Sent"),
+                                message: Text("Password Reset Email Sent."),
+                                dismissButton: .default(Text("OK"))
+                            )
+                        }
+                    }
+                    
                     .foregroundColor(.white.opacity(0.5))
                     .padding(.top, 5)
                     .padding(.horizontal, -72)
@@ -143,7 +165,7 @@ struct LogInView: View {
                         
                         Button(action: {
                             withAnimation {
-                                self.currentShowingView = "signup"
+                                showSignUpView = true
                             }
                             
                             
@@ -280,8 +302,19 @@ struct LogInView: View {
                     }
                 }
                 .padding(.bottom, 200)
-                
-            }
+                .sheet(isPresented: $showSignUpView) {
+                    SignUpView(currentShowingView: $currentViewShowing, reportedLocations: $reportedLocations, isSignedUp: $isSignedUp)
+                        .onReceive(Just(isSignedUp)) { newValue in
+                            if newValue {
+                                print("User signed in!")
+                                showSignUpView = false
+                            }
+                            else {
+                                showSignUpView = true
+                            }
+                        }
+                }
+        }
         }
     }
 }
