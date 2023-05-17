@@ -125,7 +125,6 @@ struct LogInView: View {
                     Button("Forgot Password?") {
                         if email.isEmpty {
                             isShowingPasswordResetAlert = true
-                            
                         } else {
                             Auth.auth().sendPasswordReset(withEmail: email) { error in
                                 if let error = error {
@@ -133,28 +132,27 @@ struct LogInView: View {
                                     print("Error sending password reset email: \(error.localizedDescription)")
                                 } else {
                                     // Password reset email sent successfully
-                                    let alert = UIAlertController(title: "Email Sent", message: "Password Reset Email Sent.", preferredStyle: .alert)
-                                    alert.addAction(UIAlertAction(title: "OK", style: .default))
-                                    UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
+                                    isShowingPasswordResetAlert = true
                                 }
                             }
                         }
                     }
                     .alert(isPresented: $isShowingPasswordResetAlert) {
-                        if email.isEmpty {
-                            return Alert(
-                                title: Text("Email Required"),
-                                message: Text("Please enter your email address to reset your password."),
-                                dismissButton: .default(Text("OK"))
-                            )
-                        } else {
-                            return Alert(
-                                title: Text("Email Sent"),
-                                message: Text("Password Reset Email Sent."),
-                                dismissButton: .default(Text("OK"))
-                            )
-                        }
-                    }
+                         if email.isEmpty {
+                             return Alert(
+                                 title: Text("Email Required"),
+                                 message: Text("Please enter your email address to reset your password."),
+                                 dismissButton: .default(Text("OK"))
+                             )
+                         } else {
+                             return Alert(
+                                 title: Text("Email Sent"),
+                                 message: Text("Password Reset Email Sent."),
+                                 dismissButton: .default(Text("OK"))
+                             )
+                         }
+                     }
+                     
                     
                     .foregroundColor(.white.opacity(0.5))
                     .padding(.top, 5)

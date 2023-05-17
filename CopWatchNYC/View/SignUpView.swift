@@ -18,7 +18,7 @@ struct SignUpView: View {
     @State private var showAlert = false
     @State private var isPasswordVisible = false
     @Binding var isSignedUp: Bool
-    
+    @State private var isShowingEmailVerificationAlert = false
     @StateObject private var userController = UserController()
     
     var passwordsMatch: Bool {
@@ -200,7 +200,7 @@ struct SignUpView: View {
                     
                     Button {
                         if password == confirmPassword {
-                            isSignedUp = true
+                          
                             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                                 if let error = error {
                                     print(error.localizedDescription)
@@ -217,20 +217,17 @@ struct SignUpView: View {
                                         return
                                     }
                                 }
-                                
                                 if let user = authResult?.user {
-                                    isSignedUp = true
-                                    //print(user.uid)
                                     user.sendEmailVerification()
-                                    //print("email verifcation sent")
-                                    let alertController = UIAlertController(title: "Email Verification Sent", message: "A verification email has been sent to your email address. Please check your inbox and follow the instructions to verify your email address.", preferredStyle: .alert)
-                                    alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-                                        showAlert = false
-                                        currentShowingView = "login"
-                                    }))
-                                    UIApplication.shared.windows.first?.rootViewController?.present(alertController, animated: true, completion: nil)
+                                    isShowingEmailVerificationAlert = true
+                                    
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                        isSignedUp = true
+                                    }
                                 }
+                                
                             }
+                            
                             
                         } else {
                             // Display an error message
@@ -327,6 +324,16 @@ struct SignUpView: View {
                         dismissButton: .default(Text("OK"))
                     )
                 }
+                .alert(isPresented: $isShowingEmailVerificationAlert) {
+                    Alert(
+                        title: Text("Email Verification Sent"),
+                        message: Text("A verification email has been sent to your email address. Please check your inbox and follow the instructions to verify your email address."),
+                        dismissButton: .default(Text("OK")) {
+                            currentShowingView = "login"
+                        }
+                    )
+                }
+
             }
         }
     }
