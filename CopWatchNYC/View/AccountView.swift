@@ -26,7 +26,7 @@ struct AccountView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Image("Main Logo")
+                Image("Main Logo") // Main Logo
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 150)
@@ -38,7 +38,7 @@ struct AccountView: View {
                             userEmail = user.email ?? "Not Signed In"
                         }
                     }
-                Text("\(userEmail)")
+                Text("\(userEmail)") // Text for showing user's email
                     .font(.title)
                     .fontWeight(.bold)
                     .padding(.top, 20)
@@ -46,10 +46,10 @@ struct AccountView: View {
                 
                 
                 VStack(alignment: .center) {
-                    Text("How many Posts do you have?")
+                    Text("How many Posts do you have?") // Text asking how many posts
                         .font(.headline)
                         .foregroundColor(.white)
-                    Text("\(postsCount)")
+                    Text("\(postsCount)") // Text showing post count
                         .font(.title)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
@@ -58,10 +58,10 @@ struct AccountView: View {
                 .frame(maxWidth: .infinity, alignment: .center)
                 
                 VStack(alignment: .center) {
-                    Text("How many Likes do you have?")
+                    Text("How many Likes do you have?") // Text asking how many likes
                         .font(.headline)
                         .foregroundColor(.white)
-                    Text("\(likesCount)")
+                    Text("\(likesCount)") // Text showing likes count
                         .font(.title)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
@@ -72,7 +72,7 @@ struct AccountView: View {
                 Spacer()
                 
                 VStack {
-                    Button(action: {
+                    Button(action: { // Button for Login
                         showAuthView = true
                     }) {
                         Text("Log In")
@@ -85,7 +85,7 @@ struct AccountView: View {
                             .padding(.bottom, 20)
                     }
                     
-                    Button(action: {
+                    Button(action: { // Button for Sign Out
                         do {
                             try Auth.auth().signOut()
                             isLoggedIn = false

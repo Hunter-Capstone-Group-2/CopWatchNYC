@@ -41,7 +41,7 @@ struct PinnedReportView: View {
             Text("Comments")
                 .font(.headline)
                 .foregroundColor(.white)
-            
+            //scrollview made for comment section
             ScrollView {
                         CommentView()
                     }
